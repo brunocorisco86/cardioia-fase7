@@ -138,8 +138,36 @@ def update_telemetry(data: TelemetryInput):
 def get_latest_telemetry():
     """
     Retorna os dados de telemetria mais recentes gravados na memória do servidor.
-    Será consumido pelo dashboard Web/Mobile de forma contínua (pooling).
+    Se nenhuma telemetria real tiver sido postada recentemente (timestamp nulo),
+    simula flutuações fisiológicas realistas de uma pessoa em repouso.
     """
+    global latest_telemetry
+    import time
+    import math
+    import random
+    
+    if latest_telemetry.get("timestamp") is None:
+        t = time.time()
+        # Simulação realista: 72 bpm base + arritmia sinusal de 4 bpm + flutuação leve de batimentos
+        base_fc = 72.0
+        sinus = math.sin(t / 2.5) * 4.0
+        noise = random.uniform(-1.0, 1.0)
+        sim_fc = int(base_fc + sinus + noise)
+        
+        # Temperatura realista variando levemente em torno de 36.4°C
+        base_temp = 36.4
+        temp_sinus = math.sin(t / 5.0) * 0.15
+        temp_noise = random.uniform(-0.04, 0.04)
+        sim_temp = round(base_temp + temp_sinus + temp_noise, 1)
+        
+        return {
+            "temperatura": sim_temp,
+            "frequencia_cardiaca": sim_fc,
+            "timestamp": datetime.datetime.now().isoformat(),
+            "alerta": False,
+            "mensagem_alerta": "Sinais vitais normais (Simulação Fisiológica)."
+        }
+        
     return latest_telemetry
 
 @app.post("/api/predict")

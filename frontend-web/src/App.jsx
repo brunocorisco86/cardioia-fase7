@@ -28,14 +28,21 @@ function App() {
     mensagem_alerta: 'Sinais vitais normais.'
   });
   const [telemetryHistory, setTelemetryHistory] = useState([
-    { fc: 72, temp: 36.4 },
+    { fc: 70, temp: 36.3 },
+    { fc: 71, temp: 36.4 },
+    { fc: 73, temp: 36.4 },
     { fc: 75, temp: 36.5 },
-    { fc: 78, temp: 36.5 },
-    { fc: 80, temp: 36.6 },
-    { fc: 79, temp: 36.5 },
-    { fc: 81, temp: 36.6 },
-    { fc: 83, temp: 36.7 },
-    { fc: 80, temp: 36.5 }
+    { fc: 76, temp: 36.5 },
+    { fc: 75, temp: 36.6 },
+    { fc: 73, temp: 36.5 },
+    { fc: 71, temp: 36.5 },
+    { fc: 69, temp: 36.4 },
+    { fc: 68, temp: 36.3 },
+    { fc: 69, temp: 36.4 },
+    { fc: 71, temp: 36.4 },
+    { fc: 73, temp: 36.5 },
+    { fc: 75, temp: 36.6 },
+    { fc: 74, temp: 36.5 }
   ]);
 
   // Estados de Operação da API
@@ -58,6 +65,7 @@ function App() {
 
   // Intervalo de Polling
   const pollingRef = useRef(null);
+  const simTickRef = useRef(0);
 
   // 1. Monitorar Status do Backend e Configurar Polling
   useEffect(() => {
@@ -102,32 +110,24 @@ function App() {
       
       // Configura geração de dados simulados locais
       pollingRef.current = setInterval(() => {
+        simTickRef.current += 1;
+        
         setTelemetry(prev => {
-          // Pequena flutuação aleatória
-          const fcDelta = Math.floor(Math.random() * 9) - 4; // -4 a 4
-          const tempDelta = (Math.random() * 0.4) - 0.2; // -0.2 a 0.2
+          // Simulação baseada em biometria realista de repouso:
+          // Base de 72 bpm + arritmia sinusal respiratória (oscilação senoidal suave) + ruído fisiológico
+          const baseFc = 72;
+          const sinus = Math.sin(simTickRef.current * 0.4) * 4; // oscilação de repouso (período ~15s)
+          const noise = (Math.random() * 2) - 1; // flutuação pequena de batimento
+          const nextFc = Math.round(baseFc + sinus + noise);
           
-          let nextFc = prev.frequencia_cardiaca + fcDelta;
-          if (nextFc < 55) nextFc = 60;
-          if (nextFc > 115) nextFc = 100;
+          // Temperatura corporal realista em repouso (variando levemente de 36.2°C a 36.7°C)
+          const baseTemp = 36.4;
+          const tempSinus = Math.sin(simTickRef.current * 0.2) * 0.15;
+          const tempNoise = (Math.random() * 0.08) - 0.04;
+          const nextTemp = parseFloat((baseTemp + tempSinus + tempNoise).toFixed(1));
           
-          let nextTemp = parseFloat((prev.temperatura + tempDelta).toFixed(1));
-          if (nextTemp < 35.8) nextTemp = 36.2;
-          if (nextTemp > 39.2) nextTemp = 37.5;
-          
-          // Validação de alertas simulados
           let alerta = false;
           let mensagem_alerta = 'Sinais vitais normais.';
-          if (nextFc > 100) {
-            alerta = true;
-            mensagem_alerta = 'Alerta de Saúde: Taquicardia detectada!';
-          } else if (nextFc < 50) {
-            alerta = true;
-            mensagem_alerta = 'Alerta de Saúde: Bradicardia detectada!';
-          } else if (nextTemp > 38.0) {
-            alerta = true;
-            mensagem_alerta = 'Alerta de Saúde: Febre detectada!';
-          }
           
           const newPoint = {
             temperatura: nextTemp,
