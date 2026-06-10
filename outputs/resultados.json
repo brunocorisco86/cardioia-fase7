@@ -1,0 +1,73 @@
+{
+  "metricas": {
+    "acuracia": 0.954,
+    "precisao": 0.8541,
+    "recall": 0.8927,
+    "f1": 0.8729,
+    "auc_roc": 0.9892,
+    "matriz_confusao": [
+      [
+        796,
+        27
+      ],
+      [
+        19,
+        158
+      ]
+    ],
+    "n_treino": 3000,
+    "n_teste": 1000
+  },
+  "visao": {
+    "objetos_reais": 12,
+    "objetos_detectados": 12,
+    "imagem": "outputs/visao_deteccao.png"
+  },
+  "recomendacoes": [
+    {
+      "primario": "OBJ-00625",
+      "secundario": "OBJ-00608",
+      "risco": 1.0,
+      "distancia_minima_km": 0.701,
+      "tempo_ate_aprox_h": 28.83,
+      "acao_recomendada": "MANOBRA EVASIVA IMEDIATA"
+    },
+    {
+      "primario": "OBJ-00338",
+      "secundario": "OBJ-00585",
+      "risco": 1.0,
+      "distancia_minima_km": 0.373,
+      "tempo_ate_aprox_h": 36.24,
+      "acao_recomendada": "MANOBRA EVASIVA IMEDIATA"
+    },
+    {
+      "primario": "OBJ-01038",
+      "secundario": "OBJ-00926",
+      "risco": 1.0,
+      "distancia_minima_km": 0.178,
+      "tempo_ate_aprox_h": 60.89,
+      "acao_recomendada": "MANOBRA EVASIVA IMEDIATA"
+    },
+    {
+      "primario": "OBJ-00546",
+      "secundario": "OBJ-01034",
+      "risco": 1.0,
+      "distancia_minima_km": 0.498,
+      "tempo_ate_aprox_h": 59.07,
+      "acao_recomendada": "MANOBRA EVASIVA IMEDIATA"
+    },
+    {
+      "primario": "OBJ-00315",
+      "secundario": "OBJ-00152",
+      "risco": 1.0,
+      "distancia_minima_km": 0.608,
+      "tempo_ate_aprox_h": 44.58,
+      "acao_recomendada": "MANOBRA EVASIVA IMEDIATA"
+    }
+  ],
+  "log_agentes": [
+    "[AgenteMonitor] ingestao",
+    "[AgenteAnalista] analise",
+    "[AgenteDecisor] decisao"
+  ]
+}

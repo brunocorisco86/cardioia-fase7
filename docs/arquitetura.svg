@@ -1,0 +1,52 @@
+<svg viewBox="0 0 860 520" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,Segoe UI,Roboto,sans-serif">
+  <rect width="860" height="520" fill="#0b1020"/>
+  <text x="430" y="38" fill="#e6ecff" font-size="22" font-weight="700" text-anchor="middle">ORBITAL-IA — Arquitetura da Solução</text>
+  <text x="430" y="60" fill="#8b97b8" font-size="13" text-anchor="middle">Sistema multiagente de monitoramento de detritos espaciais e risco de colisão</text>
+
+  <!-- Camada de dados -->
+  <rect x="40" y="90" width="780" height="80" rx="12" fill="#101a33" stroke="#243049"/>
+  <text x="56" y="114" fill="#5b8cff" font-size="13" font-weight="700">1 · CAMADA DE DADOS (pipeline)</text>
+  <rect x="56" y="124" width="220" height="34" rx="8" fill="#141b30" stroke="#243049"/>
+  <text x="166" y="146" fill="#e6ecff" font-size="12" text-anchor="middle">Catálogo orbital (TLE-like)</text>
+  <rect x="290" y="124" width="220" height="34" rx="8" fill="#141b30" stroke="#243049"/>
+  <text x="400" y="146" fill="#e6ecff" font-size="12" text-anchor="middle">Eventos de conjunção</text>
+  <rect x="524" y="124" width="280" height="34" rx="8" fill="#141b30" stroke="#243049"/>
+  <text x="664" y="146" fill="#e6ecff" font-size="12" text-anchor="middle">Imagens orbitais sintéticas</text>
+
+  <!-- Camada de IA -->
+  <rect x="40" y="195" width="780" height="120" rx="12" fill="#101a33" stroke="#243049"/>
+  <text x="56" y="219" fill="#5b8cff" font-size="13" font-weight="700">2 · NÚCLEO DE IA</text>
+  <rect x="56" y="232" width="230" height="66" rx="8" fill="#141b30" stroke="#3b82f6"/>
+  <text x="171" y="258" fill="#e6ecff" font-size="13" font-weight="600" text-anchor="middle">Rede Neural (MLP)</text>
+  <text x="171" y="278" fill="#8b97b8" font-size="11" text-anchor="middle">previsão de risco de colisão</text>
+  <rect x="300" y="232" width="230" height="66" rx="8" fill="#141b30" stroke="#22c55e"/>
+  <text x="415" y="258" fill="#e6ecff" font-size="13" font-weight="600" text-anchor="middle">Visão Computacional</text>
+  <text x="415" y="278" fill="#8b97b8" font-size="11" text-anchor="middle">detecção de objetos (OpenCV → YOLO)</text>
+  <rect x="544" y="232" width="260" height="66" rx="8" fill="#141b30" stroke="#f59e0b"/>
+  <text x="674" y="258" fill="#e6ecff" font-size="13" font-weight="600" text-anchor="middle">IA Generativa / NLP</text>
+  <text x="674" y="278" fill="#8b97b8" font-size="11" text-anchor="middle">briefing em linguagem natural</text>
+
+  <!-- Camada multiagente -->
+  <rect x="40" y="340" width="780" height="86" rx="12" fill="#101a33" stroke="#243049"/>
+  <text x="56" y="364" fill="#5b8cff" font-size="13" font-weight="700">3 · SISTEMA MULTIAGENTE (orquestração)</text>
+  <rect x="56" y="376" width="230" height="38" rx="8" fill="#141b30" stroke="#243049"/>
+  <text x="171" y="400" fill="#e6ecff" font-size="12" text-anchor="middle">AgenteMonitor (percepção)</text>
+  <rect x="300" y="376" width="230" height="38" rx="8" fill="#141b30" stroke="#243049"/>
+  <text x="415" y="400" fill="#e6ecff" font-size="12" text-anchor="middle">AgenteAnalista (raciocínio)</text>
+  <rect x="544" y="376" width="260" height="38" rx="8" fill="#141b30" stroke="#243049"/>
+  <text x="674" y="400" fill="#e6ecff" font-size="12" text-anchor="middle">AgenteDecisor (decisão)</text>
+
+  <!-- Camada de saída -->
+  <rect x="40" y="451" width="780" height="46" rx="12" fill="#101a33" stroke="#243049"/>
+  <text x="56" y="468" fill="#5b8cff" font-size="13" font-weight="700">4 · SAÍDA</text>
+  <text x="430" y="481" fill="#e6ecff" font-size="12" text-anchor="middle">Dashboard HTML · Briefing · Recomendações de manobra · Métricas (JSON) · Gráficos</text>
+
+  <!-- setas -->
+  <g stroke="#5b8cff" stroke-width="2" fill="none" marker-end="url(#a)">
+    <line x1="430" y1="170" x2="430" y2="193"/>
+    <line x1="430" y1="315" x2="430" y2="338"/>
+    <line x1="430" y1="426" x2="430" y2="449"/>
+  </g>
+  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+    <path d="M0,0 L6,3 L0,6 Z" fill="#5b8cff"/></marker></defs>
+</svg>
