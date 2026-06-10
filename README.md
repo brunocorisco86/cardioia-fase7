@@ -11,9 +11,10 @@ Prova de Conceito (POC) para a economia espacial.
 
 | Nome | RM | Turma |
 |------|----|-------|
-| _preencher_ | _preencher_ | _preencher_ |
-| _preencher_ | _preencher_ | _preencher_ |
-| _preencher_ | _preencher_ | _preencher_ |
+| Matheus Augusto Rodrigues Maia | RM 560683 | 2TIAOR |
+| Bruno Henrique Nielsen Conter | RM 560518 | 2TIAOR |
+| Fabio Santos Cardoso | RM 560479 | 2TIAOR |
+| Luis Emidio | RM 559976 | 2TIAOR |
 
 > ⚠️ Não esqueça de preencher o nome dos integrantes (exigência da entrega).
 
