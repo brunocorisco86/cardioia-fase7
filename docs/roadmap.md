@@ -52,7 +52,7 @@ Para guiar o desenvolvimento completo dos entregáveis obrigatórios da **Cardio
 ### 🔌 Etapa 3: Hardware, MicroPython e Simulação IoT
 - [x] **Lógica do Dispositivo:** Desenvolver em `iot/main.py` o script compatível com MicroPython para rodar no Raspberry Pi Pico W ou ESP32.
 - [x] **Captura de Sinais:** Escrever a lógica de leitura simulada dos sensores de temperatura e batimentos cardíacos.
-- [ ] **Simulação no Wokwi:** Montar a placa com leitor de temperatura (ex: DHT22), potenciômetro (simulando batimentos), display OLED (para feedbacks locais) e leds/buzzer de alerta.
+- [x] **Simulação no Wokwi:** Montar a placa com leitor de temperatura (ex: DHT22), potenciômetro (simulando batimentos), display OLED (para feedbacks locais) e leds/buzzer de alerta.
 - [x] **Conexão:** Habilitar o MicroPython para enviar os sinais lidos via HTTP POST ao endpoint da nossa API de Backend.
 
 ### 🌐 Etapa 4: Interfaces Web, Mobile e Pipeline de Deploy
