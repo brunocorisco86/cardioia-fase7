@@ -107,6 +107,22 @@ O sistema utiliza o **OpenAI Agents SDK** com as seguintes funcionalidades:
 
 ---
 
+## 💻 Plataforma Web (React + Vite)
+
+A plataforma web da CardioIA foi desenvolvida como uma Single Page Application (SPA) moderna utilizando **React**, **Vite** e **CSS customizado** (código localizado na pasta [`/frontend-web`](./frontend-web/)).
+
+A interface médica possui:
+- **Painel de Telemetria:** Gráficos interativos em tempo real com dados de batimentos cardíacos e temperatura.
+- **Histórico e Triagem:** Visualização e listagem detalhada de pacientes com destaque visual imediato para estados de alerta.
+- **Integração de IA:** Chamada direta e exibição do diagnóstico detalhado do modelo de ML clássico e do sistema de agentes CardioIA.
+- **Configuração de Deploy:** Arquivo `vercel.json` configurado para o correto roteamento de SPAs na Vercel.
+
+### 📊 Painel Geral do Dashboard Web
+O painel exibe de forma clara e analítica os dados clínicos monitorados:
+![CardioIA - Dashboard Web](./images/Dashboard%20Frontend%20Web.png)
+
+---
+
 ## 🔌 Protótipo IoT & Simulação Wokwi
 
 O circuito de hardware da CardioIA foi desenvolvido em **MicroPython** utilizando o microcontrolador **ESP32** no simulador **Wokwi** (código e diagrama de fiação disponíveis na pasta [`/iot`](./iot/)).

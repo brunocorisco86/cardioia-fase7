@@ -18,7 +18,7 @@ Abaixo está o detalhamento dos requisitos obrigatórios comparados com o estado
 | :--- | :--- | :---: | :--- |
 | **Web SPA (React + Vite)** publicada na Vercel com suporte a rotas configuradas via `vercel.json` e CI/CD ativo. | A aplicação SPA em React + Vite está em `frontend-web/` com layout premium, gráficos e `vercel.json`. | **100%** | Nenhuma (CI/CD ativo ao conectar o repositório). |
 | **Mobile (React Native + Expo)** configurado com `app.json` (android package em domínio invertido) e `eas.json` (perfil preview). | O aplicativo móvel está em `mobile-app/` com tela de login, telemetria em tempo real, evolução e predições integradas com a API. | **90%** | Executar o build na nuvem via Expo CLI (`eas build`) para gerar o arquivo `.apk`. |
-| **README.md** com URL pública da Vercel, link/QR Code para o APK, prints comprobatórios de deploy e instruções. | O `README.md` foi atualizado com a ementa da CardioIA, a arquitetura do circuito IoT e embutindo as capturas de tela da simulação física em funcionamento. | **80%** | Inserir os links da Vercel, Expo e vídeo após as gerações finais. |
+| **README.md** com URL pública da Vercel, link/QR Code para o APK, prints comprobatórios de deploy e instruções. | O README.md foi atualizado com a ementa da CardioIA, a plataforma web (com captura do painel), a arquitetura do circuito IoT e as capturas de tela da simulação física em funcionamento. | **85%** | Inserir os links da Vercel, Expo e vídeo após as gerações finais. |
 
 ### PARTE 2 – Integração do Ecossistema e Arquitetura Final
 | Requisito do Enunciado | Estado Atual | Completude | Pendências |
