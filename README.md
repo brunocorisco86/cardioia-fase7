@@ -21,6 +21,8 @@ Este repositório contém a implementação da Fase 6 do projeto CardioIA, que f
     *   `base_cardioia.csv`: Base de dados sintética gerada.
     *   `conf_matrix.png`: Matriz de confusão gerada na avaliação.
     *   `log_sistema.txt`: Log de saída da última execução do sistema multiagente.
+*   `entregaveis/`: Pasta que centraliza os links oficiais de entrega (GitHub, Vercel, Expo, Wokwi, Vídeo):
+    *   `README.md`: Arquivo com a lista de links oficiais da entrega da Fase 7.
 *   `iot/`: Pasta reservada para a implementação de hardware com MicroPython.
 *   `docs/`: Pasta com documentações auxiliares do projeto:
     *   `enunciado_cap7_cardioia.md`: Enunciado da atividade da Fase 7.

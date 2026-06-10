@@ -1,7 +1,7 @@
 # 📋 Avaliação de Completude e Roadmap: CardioIA (Fase 7)
 
-> ### 📊 Status de Completude Geral: **15%**
-> `[██████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]` **(1.2/7 requisitos concluídos)**
+> ### 📊 Status de Completude Geral: **20%**
+> `[████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]` **(1.4/7 requisitos concluídos)**
 
 Este documento apresenta a análise de completude do repositório atual em relação aos requisitos obrigatórios do enunciado da **Fase 7 - CardioIA (Coração Sob Controle: Previsão de Crises com IA)** e define o roadmap de implementação para o desenvolvimento do MVP final, desconsiderando os tópicos opcionais "Ir Além".
 
@@ -35,13 +35,14 @@ Abaixo está o detalhamento dos requisitos obrigatórios comparados com o estado
 Para guiar o desenvolvimento completo dos entregáveis obrigatórios da **CardioIA**, o projeto foi estruturado em 5 etapas principais:
 
 ### 📂 Etapa 1: Estruturação do Repositório (Limpeza e Arquitetura de Pastas)
-- [ ] Mover os arquivos e códigos da Fase 6 para a pasta `/backend` para segmentar responsabilidades.
-- [ ] Criar a estrutura física de diretórios:
-  - `/backend` - API Python (FastAPI/Flask) + Motores de IA (OpenAI Agents SDK)
-  - `/frontend-web` - SPA React + Vite
-  - `/mobile-app` - React Native + Expo
-  - `/iot` - Código MicroPython e esquemáticos
-  - `/docs` - Enunciados, Diagramas e Relatórios Técnicos
+- [x] Mover os arquivos e códigos da Fase 6 para a pasta `/backend` para segmentar responsabilidades.
+- [x] Criar a estrutura física de diretórios básicos:
+  - [x] `/backend` - API Python + Motores de IA (OpenAI Agents SDK)
+  - [x] `/iot` - Pasta reservada para MicroPython e esquemáticos
+  - [x] `/docs` - Enunciados, Diagramas e Relatórios Técnicos
+  - [x] `/entregaveis` - Pasta de entregáveis com link do GitHub configurado
+  - [ ] `/frontend-web` - SPA React + Vite (A ser inicializada)
+  - [ ] `/mobile-app` - React Native + Expo (A ser inicializada)
 
 ### 🧠 Etapa 2: Backend Integrador e Modelos de IA
 - [ ] **Configuração da API:** Inicializar um servidor FastAPI na pasta `backend/` com rotas para receber telemetria dos sensores e servir as interfaces.
