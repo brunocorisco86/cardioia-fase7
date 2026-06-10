@@ -105,9 +105,43 @@ O sistema utiliza o **OpenAI Agents SDK** com as seguintes funcionalidades:
 | **Validação de Saída** | Modelo Pydantic `CardioIAOutput` para garantir formato estruturado |
 | **LLM Backend** | Google Gemini (via endpoint OpenAI-compatível) |
 
-## Vídeo Demonstrativo
+---
 
-Um vídeo demonstrando o fluxo completo do sistema (entrada do novo paciente → acionamento dos agentes → geração da resposta final) está disponível no YouTube (não listado):
+## 🔌 Protótipo IoT & Simulação Wokwi
 
-[Assista ao Vídeo no YouTube](https://youtu.be/KvHgcYQLBPk)
+O circuito de hardware da CardioIA foi desenvolvido em **MicroPython** utilizando o microcontrolador **ESP32** no simulador **Wokwi** (código e diagrama de fiação disponíveis na pasta [`/iot`](./iot/)).
+
+O circuito lê as pulsações por minuto (BPM) a partir de um potenciômetro analógico que simula as variações dos batimentos do paciente, processa clinicamente os alertas e atualiza os seguintes atuadores físicos:
+- **Display OLED SSD1306**: Exibe o status da conexão Wi-Fi, frequência cardíaca local, temperatura corporal e o diagnóstico clínico em tempo real.
+- **LED Verde**: Aceso quando as métricas clínicas estão normais.
+- **LED Vermelho & Buzzer**: Ativados instantaneamente em caso de risco clínico elevado (Taquicardia ou Febre), emitindo sinal visual e alerta sonoro intermitente.
+
+### 🟢 Estado Clínico Normal
+O display OLED exibe `Sinais Normais`, o LED Verde está ativo e os alarmes estão desligados.
+![Wokwi - Sinais Normais](./images/wokwi_ok.png)
+
+### 🔴 Estado Clínico de Risco (Alerta Ativo)
+Ao girar o potenciômetro simulando taquicardia (> 100 bpm) ou febre (> 37.5°C), o display exibe `! RISCO ELEVADO !`, o LED Vermelho se acende e o Buzzer emite alertas intermitentes sonoros.
+![Wokwi - Risco Elevado](./images/wokwi_perigo.png)
+
+---
+
+## 📱 Aplicativo Móvel (React Native + Expo)
+
+Desenvolvido com **React Native** e **Expo SDK 51** (código e configurações localizados na pasta [`/mobile-app`](./mobile-app/)), o aplicativo do paciente integra:
+- **Área do Paciente**: Login para acesso seguro à telemetria individual.
+- **Monitoramento em Tempo Real**: Conexão com o backend FastAPI para receber e exibir os dados de frequência cardíaca e temperatura corporal.
+- **Gráfico de Evolução**: Sparkline gráfico dinâmico desenhado para exibir o histórico cardíaco das últimas 15 leituras.
+- **Integração de IA**: Botão para chamar a inferência clássica (Machine Learning) e a análise avançada (sistema multiagente da CardioIA).
+- **Configuração de Publicação**: Identificador Android configurado como `br.com.fiap.cardioia` e EAS Build configurado com perfil `preview` para empacotamento em formato `.apk`.
+
+---
+
+## 🚀 Links de Entrega (Fase 7)
+
+*   **Repositório GitHub (Privado):** [Link do Repositório](https://github.com/brunocorisco86/cardioia-fase7)
+*   **URL Pública do Frontend (Vercel):** _[A preencher após o deploy]_
+*   **Build Mobile (.apk no Expo):** _[A preencher após a geração do APK]_
+*   **Simulação do Hardware (Wokwi):** _[A preencher após a montagem do circuito]_
+*   **Vídeo Demonstrativo (Até 5 min):** _[A preencher após a gravação]_
 

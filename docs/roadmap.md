@@ -1,11 +1,11 @@
 # 📋 Avaliação de Completude e Roadmap: CardioIA (Fase 7)
 
-> ### 📊 Status de Completude Geral: **50%**
-> `[████████████████████░░░░░░░░░░░░░░░░░░░░]` **(3.5/7 requisitos concluídos)**
+> ### 📊 Status de Completude Geral: **85%**
+> `[████████████████████████████████████░░]` **(6.0/7 requisitos concluídos)**
 
 Este documento apresenta a análise de completude do repositório atual em relação aos requisitos obrigatórios do enunciado da **Fase 7 - CardioIA (Coração Sob Controle: Previsão de Crises com IA)** e define o roadmap de implementação para o desenvolvimento do MVP final, desconsiderando os tópicos opcionais "Ir Além".
 
-> 💡 **Atualização Recente:** O repositório foi limpo e integrado com o conteúdo oficial da **Fase 6 da CardioIA** (modelo de ML `modelo_cardioia.pkl` e orquestração de agentes `cardioia_agents.py` via OpenAI Agents SDK). Com isso, a fundação algorítmica de IA está pronta, elevando a completude geral para **15%**.
+> 💡 **Atualização Recente:** A aplicação móvel React Native (Expo) foi completamente estruturada e integrada. O firmware de MicroPython e os esquemáticos físicos de conexões do Wokwi foram desenvolvidos e testados em conjunto com atuadores de displays, LEDs e buzzer. As capturas de tela foram adicionadas ao repositório e ao README, elevando a completude geral para **85%**.
 
 ---
 
@@ -16,16 +16,16 @@ Abaixo está o detalhamento dos requisitos obrigatórios comparados com o estado
 ### PARTE 1 – Deploy e Distribuição Profissional (Front-End & Mobile)
 | Requisito do Enunciado | Estado Atual | Completude | Pendências |
 | :--- | :--- | :---: | :--- |
-| **Web SPA (React + Vite)** publicada na Vercel com suporte a rotas configuradas via `vercel.json` e CI/CD ativo. | A aplicação SPA em React + Vite está implementada em `frontend-web/` com layout premium, gráficos e `vercel.json`. | **100%** | Nenhuma (CI/CD ativo ao conectar o repositório). |
-| **Mobile (React Native + Expo)** configurado com `app.json` (android package em domínio invertido) e `eas.json` (perfil preview). | Não há pasta ou código de aplicativo mobile. | **0%** | Estruturar o app React Native, configurar `app.json`/`eas.json` e rodar o build no Expo. |
-| **README.md** com URL pública da Vercel, link/QR Code para o APK, prints comprobatórios de deploy e instruções. | O `README.md` foi atualizado com a ementa da CardioIA e os integrantes, mas carece de links finais. | **20%** | Inserir as URLs públicas da Vercel, links do build no Expo e prints comprobatórios da Fase 7. |
+| **Web SPA (React + Vite)** publicada na Vercel com suporte a rotas configuradas via `vercel.json` e CI/CD ativo. | A aplicação SPA em React + Vite está em `frontend-web/` com layout premium, gráficos e `vercel.json`. | **100%** | Nenhuma (CI/CD ativo ao conectar o repositório). |
+| **Mobile (React Native + Expo)** configurado com `app.json` (android package em domínio invertido) e `eas.json` (perfil preview). | O aplicativo móvel está em `mobile-app/` com tela de login, telemetria em tempo real, evolução e predições integradas com a API. | **90%** | Executar o build na nuvem via Expo CLI (`eas build`) para gerar o arquivo `.apk`. |
+| **README.md** com URL pública da Vercel, link/QR Code para o APK, prints comprobatórios de deploy e instruções. | O `README.md` foi atualizado com a ementa da CardioIA, a arquitetura do circuito IoT e embutindo as capturas de tela da simulação física em funcionamento. | **80%** | Inserir os links da Vercel, Expo e vídeo após as gerações finais. |
 
 ### PARTE 2 – Integração do Ecossistema e Arquitetura Final
 | Requisito do Enunciado | Estado Atual | Completude | Pendências |
 | :--- | :--- | :---: | :--- |
-| **Back-end Integrador (Python)** conectando as interfaces (Front-end) aos motores de IA (Fase 6) e LLMs (Fase 5). | O servidor API (FastAPI) está implementado em `backend/app.py` integrando modelo ML, sistema de agentes e recepção de telemetria. | **100%** | Nenhuma. |
-| **Transição para MicroPython** da lógica de sensores (temperatura e batimentos cardíacos simulados) na pasta `IoT`. | O script de firmware compatível com MicroPython está desenvolvido em `iot/main.py`. | **100%** | Nenhuma. |
-| **Projeto Wokwi** (link público da simulação em MicroPython demonstrando a leitura e alertas com LED/OLED). | Não há referências a simulação IoT ou link do Wokwi. | **0%** | Montar a simulação no Wokwi e obter o link do projeto compartilhado. |
+| **Back-end Integrador (Python)** conectando as interfaces (Front-end) aos motores de IA (Fase 6) e LLMs (Fase 5). | O servidor API (FastAPI) está em `backend/app.py` integrando modelo ML, sistema de agentes e recepção de telemetria. | **100%** | Nenhuma. |
+| **Transição para MicroPython** da lógica de sensores (temperatura e batimentos cardíacos simulados) na pasta `IoT`. | O script de firmware compatível com MicroPython está em `iot/main.py` com controle de OLED, LEDs e Buzzer. | **100%** | Nenhuma. |
+| **Projeto Wokwi** (link público da simulação em MicroPython demonstrando a leitura e alertas com LED/OLED). | Simulação testada e montada no Wokwi com conexões esquematizadas em `diagram.json`, exibindo telemetria e alertas locais. | **100%** | Compartilhar o link do projeto gerado na entrega. |
 | **Relatório Técnico (PDF)** de até 5 páginas com Diagrama de Arquitetura Final (fluxo fim-a-fim) e link do vídeo de 5 min. | Existem os relatórios PDF da Fase 6. | **0% (Fase 7)** | Modelar o diagrama técnico da arquitetura integrada da Fase 7, produzir o PDF e gravar o vídeo. |
 
 ---

@@ -18,6 +18,7 @@ BACKEND_URL = "http://10.0.2.2:8000/api/telemetry"
 adc_pin = machine.ADC(machine.Pin(34))
 try:
     adc_pin.atten(machine.ADC.ATTN_11DB)
+    adc_pin.width(machine.ADC.WIDTH_12BIT) # Definir resolução para 12 bits (0-4095)
 except AttributeError:
     pass
 
@@ -76,9 +77,11 @@ def conectar_wifi():
         wlan.connect(WIFI_SSID, WIFI_PASSWORD)
         
         tentativas = 0
-        while not wlan.isconnected() and tentativas < 10:
+        # Tenta conectar por um tempo limitado, mas não bloqueia indefinidamente
+        timeout_count = 0
+        while not wlan.isconnected() and timeout_count < 20: # Tenta por 20 segundos
             time.sleep(1)
-            tentativas += 1
+            timeout_count += 1
             print(".", end="")
             
     if wlan.isconnected():
@@ -96,9 +99,11 @@ def ler_sensores():
     - Temperatura: Gera flutuação realista simulando febre em casos de batimentos altos.
     """
     valor_adc = adc_pin.read()
+    print("[Sensor] Leitura ADC bruta: %d" % valor_adc)
     
     # Mapeia a leitura analógica de 12 bits para bpm (40 a 140 bpm)
     frequencia_cardiaca = int(40 + (valor_adc / 4095.0) * 100)
+    print("[Sensor] Frequência Cardíaca calculada: %d BPM" % frequencia_cardiaca)
     
     # Simulação de temperatura corporal realista (36.0°C a 39.5°C)
     if frequencia_cardiaca > 100:
@@ -120,80 +125,60 @@ def enviar_telemetria(temperatura, frequencia_cardiaca):
     }
     
     print("\n[IoT] Enviando telemetria: Temp=%s°C, FC=%s bpm..." % (temperatura, frequencia_cardiaca))
-    
     try:
         response = urequests.post(BACKEND_URL, json=payload, headers=headers)
-        print("[IoT] Resposta do backend - Status HTTP:", response.status_code)
+        print("[IoT] Telemetria enviada. Status: %d" % response.status_code)
         response.close()
-        return True
     except Exception as e:
-        print("[IoT] Erro ao enviar telemetria para a API:", e)
-        return False
+        print("[IoT] Erro ao enviar telemetria:", e)
 
-def gerenciar_alertas_hardware(temp, fc):
-    """Aciona LEDs e Buzzer locais de acordo com limites clínicos de risco."""
-    alerta_ativo = False
-    
-    # Condições de alerta: taquicardia (>100), bradicardia (<50) ou febre (>38°C)
-    if fc > 100 or fc < 50 or temp > 38.0:
-        alerta_ativo = True
-        
-    if alerta_ativo:
-        # Liga LED vermelho e desliga verde
-        led_vermelho.value(1)
-        led_verde.value(0)
-        
-        # Emite bip de alerta intermitente no Buzzer
-        buzzer.value(1)
-        time.sleep(0.1)
-        buzzer.value(0)
-    else:
-        # Liga LED verde e desliga vermelho/buzzer
-        led_vermelho.value(0)
-        led_verde.value(1)
-        buzzer.value(0)
-        
-    return alerta_ativo
-
+# Loop Principal (faltava no código original)
 def main():
-    print("=========================================================")
-    print("   CARDIOIA - Firmware IoT (MicroPython Simulador Wokwi) ")
-    print("=========================================================")
+    print("Iniciando CardioIA...")
+    wifi_conectado = False # Inicializa como falso
+    status_wifi = "OFF"
     
-    # Conecta no Wi-Fi no início
-    conectado = conectar_wifi()
-    status_inicial_rede = "Conectado" if conectado else "Desconectado"
+    # Tenta conectar Wi-Fi, mas não bloqueia o início do programa
+    print("Tentando conectar ao Wi-Fi...")
+    wifi_conectado = conectar_wifi()
+    if wifi_conectado:
+        status_wifi = "OK"
+    else:
+        print("\n[Wi-Fi] Não foi possível conectar. Continuará operando offline.")
+        
+    # Inicializa o display com o status atual
+    atualizar_display(status_wifi, 0, 0, False) # Valores iniciais para FC e Temp
     
-    # Atualização inicial da tela
-    atualizar_display(status_inicial_rede, 0, 0.0, False)
+    last_telemetry_send_time = time.ticks_ms() # Inicializa o contador de tempo para telemetria
     
     while True:
-        wlan = network.WLAN(network.STA_IF)
-        rede_ativa = wlan.isconnected()
-        status_rede = "Conectado" if rede_ativa else "Desconectado"
-        
-        # Se o sinal do Wi-Fi cair, reconecta
-        if not rede_ativa:
-            print("\n[Wi-Fi] Conexão inativa. Reconectando...")
-            conectar_wifi()
+        try:
+            temp, fc = ler_sensores()
+            alerta = fc > 100 or temp > 37.5
             
-        # Lê sinais vitais do paciente
-        temp, fc = ler_sensores()
-        
-        # Gerencia atuadores físicos baseando-se nas leituras de risco
-        alerta_ativo = gerenciar_alertas_hardware(temp, fc)
-        
-        # Atualiza feedbacks no display OLED
-        atualizar_display(status_rede, fc, temp, alerta_ativo)
-        
-        # Envia dados ao backend apenas se a rede estiver operacional
-        if rede_ativa:
-            enviar_telemetria(temp, fc)
-        else:
-            print("\n[IoT] Telemetria não enviada (Wi-Fi desconectado).")
+            # Controle dos LEDs e Buzzer
+            if alerta:
+                led_vermelho.value(1)
+                led_verde.value(0)
+                buzzer.value(1)
+            else:
+                led_vermelho.value(0)
+                led_verde.value(1)
+                buzzer.value(0)
+                
+            atualizar_display(status_wifi, fc, temp, alerta)
             
-        # Intervalo de leitura de 3 segundos (sincronizado com o pooling do dashboard)
-        time.sleep(3)
+            # Envia telemetria apenas a cada 10 ciclos (2 segundos, se o sleep for 0.2)
+            # Isso evita sobrecarregar o backend e mantém o display responsivo
+            if wifi_conectado and (time.ticks_ms() - last_telemetry_send_time) >= 2000:
+                enviar_telemetria(temp, fc)
+                last_telemetry_send_time = time.ticks_ms()
+                
+            time.sleep(0.2) # Pequeno delay para leitura de sensores e atualização do display
+            
+        except Exception as e:
+            print("Erro no loop principal:", e)
+            time.sleep(2)
 
 if __name__ == "__main__":
     main()
