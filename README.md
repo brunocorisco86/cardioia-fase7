@@ -13,20 +13,22 @@ Este repositório contém a implementação da Fase 6 do projeto CardioIA, que f
 
 ## Estrutura do Projeto
 
-*   `cardioia_ml.py`: Script Python para geração da base de dados sintética e treinamento do modelo de Machine Learning.
-*   `cardioia_evaluation.py`: Script Python para avaliação do modelo treinado e simulação de previsão para um novo paciente.
-*   `modelo_cardioia.pkl`: Modelo de Machine Learning treinado e serializado.
-*   `base_cardioia.csv`: Base de dados sintética gerada.
-*   `conf_matrix.png`: Imagem da matriz de confusão do modelo.
-*   `cardioia_agents.py`: Implementação do sistema multiagente com **OpenAI Agents SDK**, incluindo os agentes Analista de Risco, Especialista em Protocolos e Orquestrador, com handoffs, tools, histórico de mensagens e validação de saída.
-*   `log_sistema.txt`: Exemplo de saída do sistema multiagente.
-*   `relatorio_tecnico_cardioia.pdf`: Relatório técnico detalhando o modelo preditivo.
-*   `arquitetura_multiagente_cardioia.pdf`: Documento de arquitetura descrevendo o sistema multiagente.
-*   `arquitetura_multiagente_diagram.png`: Diagrama da arquitetura multiagente.
-*   `cardioia_colab_notebook.ipynb`: Notebook Google Colab com a implementação completa da Parte 1 (modelo preditivo).
-*   `docs/`: Pasta com documentações da Fase 7:
-    *   `enunciado_cap7_cardioia.md`: O enunciado oficial da Fase 7.
+*   `backend/`: Pasta contendo a inteligência em Python do CardioIA:
+    *   `cardioia_ml.py`: Geração da base de dados sintética e treinamento do modelo.
+    *   `cardioia_evaluation.py`: Avaliação do modelo treinado e simulação de novo paciente.
+    *   `cardioia_agents.py`: Implementação do sistema multiagente via OpenAI Agents SDK.
+    *   `modelo_cardioia.pkl`: Modelo de Machine Learning serializado.
+    *   `base_cardioia.csv`: Base de dados sintética gerada.
+    *   `conf_matrix.png`: Matriz de confusão gerada na avaliação.
+    *   `log_sistema.txt`: Log de saída da última execução do sistema multiagente.
+*   `iot/`: Pasta reservada para a implementação de hardware com MicroPython.
+*   `docs/`: Pasta com documentações auxiliares do projeto:
+    *   `enunciado_cap7_cardioia.md`: Enunciado da atividade da Fase 7.
     *   `roadmap.md`: Avaliação de completude e plano de ação detalhado para a Fase 7.
+    *   `relatorio_tecnico_cardioia_fase6.pdf`: Relatório técnico detalhando o modelo preditivo (Fase 6 - renomeado).
+    *   `arquitetura_multiagente_cardioia.pdf`: Documento de arquitetura do sistema multiagente (Fase 6).
+    *   `arquitetura_multiagente_diagram.png`: Diagrama da arquitetura do sistema multiagente (Fase 6).
+*   `cardioia_colab_notebook.ipynb`: Notebook Google Colab com a implementação da Parte 1 (modelo preditivo).
 *   `README.md`: Este arquivo.
 
 ## Dependências
