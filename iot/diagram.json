@@ -15,23 +15,23 @@
   "connections": [
     [ "esp32:GND.1", "pot:GND", "black", [ "h0" ] ],
     [ "esp32:3V3", "pot:VCC", "red", [ "h0" ] ],
-    [ "esp32:GPIO34", "pot:SIG", "blue", [ "h0" ] ],
+    [ "esp32:34", "pot:SIG", "blue", [ "h0" ] ],
     
     [ "esp32:GND.2", "oled:GND", "black", [ "h0" ] ],
     [ "esp32:3V3", "oled:VCC", "red", [ "h0" ] ],
-    [ "esp32:GPIO21", "oled:SDA", "green", [ "h0" ] ],
-    [ "esp32:GPIO22", "oled:SCL", "yellow", [ "h0" ] ],
+    [ "esp32:21", "oled:SDA", "green", [ "h0" ] ],
+    [ "esp32:22", "oled:SCL", "yellow", [ "h0" ] ],
     
     [ "esp32:GND.3", "r1:2", "black", [ "h0" ] ],
     [ "r1:1", "led_red:C", "black", [ "v0" ] ],
-    [ "esp32:GPIO13", "led_red:A", "red", [ "v0" ] ],
+    [ "esp32:13", "led_red:A", "red", [ "v0" ] ],
     
     [ "esp32:GND.3", "r2:2", "black", [ "h0" ] ],
     [ "r2:1", "led_green:C", "black", [ "v0" ] ],
-    [ "esp32:GPIO12", "led_green:A", "green", [ "v0" ] ],
+    [ "esp32:12", "led_green:A", "green", [ "v0" ] ],
     
     [ "esp32:GND.3", "buzzer:1", "black", [ "v0" ] ],
-    [ "esp32:GPIO14", "buzzer:2", "orange", [ "v0" ] ]
+    [ "esp32:14", "buzzer:2", "orange", [ "v0" ] ]
   ],
   "dependencies": {}
 }
