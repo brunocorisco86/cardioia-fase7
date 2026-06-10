@@ -1,150 +1,109 @@
-# 🛰️ ORBITAL-IA
+# CardioIA - Fase 6: Sistema Preditivo Multiagente para Eventos Cardíacos
 
-### Sistema Multiagente Inteligente para Monitoramento de Detritos Espaciais e Previsão de Risco de Colisão
+## 👥 Integrantes do Grupo
+**Turma: 2TIAOR**
 
-**Global Solution 2026.1 — FIAP · Curso de Inteligência Artificial (Fases 6 e 7)**
-Prova de Conceito (POC) para a economia espacial.
+| Nome | RM |
+| :--- | :--- |
+| Matheus Augusto Rodrigues Maia | RM 560683 |
+| Bruno Henrique Nielsen Conter | RM 560518 |
+| Fabio Santos Cardoso | RM 560479 |
 
----
+Este repositório contém a implementação da Fase 6 do projeto CardioIA, que foca no desenvolvimento de um sistema preditivo multiagente para eventos cardíacos. O projeto integra um modelo de Machine Learning para previsão de risco com uma arquitetura multiagente baseada no **OpenAI Agents SDK**, utilizando o endpoint compatível do Google Gemini.
 
-## 👥 Integrantes
+## Estrutura do Projeto
 
-| Nome | RM | Turma |
-|------|----|-------|
-| Matheus Augusto Rodrigues Maia | RM 560683 | 2TIAOR |
-| Bruno Henrique Nielsen Conter | RM 560518 | 2TIAOR |
-| Fabio Santos Cardoso | RM 560479 | 2TIAOR |
+*   `cardioia_ml.py`: Script Python para geração da base de dados sintética e treinamento do modelo de Machine Learning.
+*   `cardioia_evaluation.py`: Script Python para avaliação do modelo treinado e simulação de previsão para um novo paciente.
+*   `modelo_cardioia.pkl`: Modelo de Machine Learning treinado e serializado.
+*   `base_cardioia.csv`: Base de dados sintética gerada.
+*   `conf_matrix.png`: Imagem da matriz de confusão do modelo.
+*   `cardioia_agents.py`: Implementação do sistema multiagente com **OpenAI Agents SDK**, incluindo os agentes Analista de Risco, Especialista em Protocolos e Orquestrador, com handoffs, tools, histórico de mensagens e validação de saída.
+*   `log_sistema.txt`: Exemplo de saída do sistema multiagente.
+*   `relatorio_tecnico_cardioia.pdf`: Relatório técnico detalhando o modelo preditivo.
+*   `arquitetura_multiagente_cardioia.pdf`: Documento de arquitetura descrevendo o sistema multiagente.
+*   `arquitetura_multiagente_diagram.png`: Diagrama da arquitetura multiagente.
+*   `cardioia_colab_notebook.ipynb`: Notebook Google Colab com a implementação completa da Parte 1 (modelo preditivo).
+*   `docs/`: Pasta com documentações da Fase 7:
+    *   `enunciado_cap7_cardioia.md`: O enunciado oficial da Fase 7.
+    *   `roadmap.md`: Avaliação de completude e plano de ação detalhado para a Fase 7.
+*   `README.md`: Este arquivo.
 
-> ⚠️ Não esqueça de preencher o nome dos integrantes (exigência da entrega).
+## Dependências
 
----
+Para executar os scripts Python, você precisará das seguintes bibliotecas:
 
-## 🎯 O problema
+*   `pandas`
+*   `numpy`
+*   `scikit-learn`
+*   `joblib`
+*   `matplotlib`
+*   `seaborn`
+*   `openai` (cliente OpenAI para Python)
+*   `openai-agents` (OpenAI Agents SDK)
+*   `pydantic`
 
-A pergunta da Global Solution é: **“Como tecnologias avançadas de Inteligência Artificial e
-computação podem impulsionar a nova economia espacial e gerar impacto positivo na Terra?”**
-
-Hoje há mais de **130 milhões de fragmentos de detritos espaciais** orbitando a Terra. Eles
-ameaçam os satélites que sustentam serviços essenciais no planeta: monitoramento climático,
-previsão de desastres, telecomunicações, internet e navegação por GPS. Uma única colisão pode
-gerar milhares de novos fragmentos (efeito *Kessler*), comprometendo toda essa infraestrutura.
-
-**Proteger esses ativos orbitais é, na prática, proteger serviços críticos na Terra.**
-
-## 💡 A solução
-
-O **ORBITAL-IA** é uma POC que integra **rede neural, visão computacional, sistema multiagente
-e IA generativa** em um único pipeline que:
-
-1. ingere o catálogo de objetos em órbita e detecta aproximações (conjunções);
-2. prevê, com uma **rede neural**, a probabilidade de colisão de cada conjunção;
-3. detecta objetos em imagens orbitais com **visão computacional**;
-4. coordena tudo através de um **sistema multiagente** (percepção → raciocínio → decisão);
-5. gera, com **IA generativa**, um briefing operacional em linguagem natural com as ações
-   recomendadas (manobras evasivas, monitoramento etc.);
-6. apresenta os resultados em um **dashboard** visual.
-
-## 🏗️ Arquitetura
-
-![Arquitetura](docs/arquitetura.svg)
-
-| Camada | Componente | Tecnologia |
-|--------|-----------|------------|
-| 1. Dados | Catálogo orbital, eventos de conjunção, imagens | `pandas`, `numpy` |
-| 2. Núcleo de IA | Rede neural de risco | `scikit-learn` (MLP) |
-| | Visão computacional | `OpenCV` (evolução para `YOLO`) |
-| | IA Generativa / NLP | Template + API Anthropic (opcional) |
-| 3. Multiagente | Monitor · Analista · Decisor | Python (barramento de mensagens) |
-| 4. Saída | Dashboard, briefing, métricas | HTML + `matplotlib` + JSON |
-
-## 🧠 Tecnologias e conceitos das Fases 6 e 7 aplicados
-
-- **Redes neurais** — `MLPClassifier` para classificação de risco de colisão.
-- **Sistemas multiagentes** — três agentes cooperativos (percepção, raciocínio, decisão).
-- **Visão computacional** — pipeline de detecção de objetos (limiarização, morfologia,
-  contornos), com interface preparada para troca por **YOLO**.
-- **IA Generativa / NLP** — geração de briefing em linguagem natural (com hook opcional para a
-  **API da Anthropic**, padrão de **RAG/sumarização**).
-- **Pipeline de dados e análise em tempo real** — ingestão, transformação e scoring.
-- **Comunicação visual** — dashboard HTML responsivo e gráficos.
-
-## 📁 Estrutura do projeto
-
-```
-.
-├── main.py                 # Orquestrador principal da POC
-├── requirements.txt        # Dependências do projeto (incluindo pytest)
-├── README.md               # Documentação principal
-├── .gitignore              # Arquivos ignorados pelo Git
-├── docs/                   # Documentações auxiliares
-│   ├── arquitetura.svg     # Diagrama de arquitetura
-│   ├── enunciado_cap7_cardioia.md
-│   └── roadmap.md          # Avaliação de completude e plano de ação
-├── src/                    # Módulos principais em Python
-│   ├── dados.py            # Geração de catálogo orbital e conjunções
-│   ├── modelo.py           # Rede neural MLP (risco de colisão)
-│   ├── visao.py            # Detecção de objetos por Visão Computacional (OpenCV)
-│   ├── agentes.py          # Sistema Multiagente (Monitor, Analista, Decisor)
-│   └── genai.py            # IA Generativa para briefing operacional (offline/online)
-├── tests/                  # Suíte de testes automatizados (pytest)
-│   ├── conftest.py         # Fixtures globais e configuração de path
-│   ├── test_dados.py       # Testes do gerador de dados
-│   ├── test_modelo.py      # Testes da rede neural
-│   ├── test_visao.py       # Testes da visão computacional (OpenCV)
-│   ├── test_agentes.py     # Testes do sistema multiagente
-│   └── test_genai.py       # Testes do briefing por IA Generativa
-└── outputs/                # Artefatos gerados na execução
-    ├── dashboard.html      # Painel visual consolidado
-    ├── briefing.txt        # Briefing de missão gerado por IA
-    ├── resultados.json     # JSON contendo métricas e logs
-    └── *.png               # Gráficos de suporte do dashboard
-```
-
-## ▶️ Como executar
+Você pode instalá-las usando pip:
 
 ```bash
-# 1. instalar dependências
-pip install -r requirements.txt
-
-# 2. rodar a POC completa
-python main.py
-
-# 3. abrir o painel
-#    abra o arquivo outputs/dashboard.html no navegador
+pip install pandas numpy scikit-learn joblib matplotlib seaborn openai openai-agents pydantic python-dotenv
 ```
 
-> A execução é **100% offline e reprodutível** (dados sintéticos com seed fixa).
-> Para usar IA generativa real no briefing, defina `ANTHROPIC_API_KEY` antes de rodar.
+## Configuração
 
-## 📊 Resultados (última execução)
+### Chave de API do Google Gemini
 
-| Métrica | Valor |
-|---------|-------|
-| Acurácia | ~95% |
-| F1-score | ~0,87 |
-| AUC-ROC | ~0,99 |
-| Recall (detecção de risco) | ~0,89 |
+O sistema multiagente utiliza o **OpenAI Agents SDK** apontando para o endpoint compatível do Google Gemini. Para isso, é necessária uma chave de API do Google AI Studio (gratuita).
 
-O sistema multiagente prioriza as conjunções de maior risco e emite recomendações de ação
-(de “acompanhamento de rotina” até “manobra evasiva imediata”).
+1.  Acesse [Google AI Studio](https://aistudio.google.com/) e gere uma chave de API.
+2.  Abra o arquivo `.env` na raiz do projeto.
+3.  Substitua `SUA_CHAVE_AQUI` pela chave que você acabou de gerar:
+    ```env
+    GOOGLE_API_KEY="AIzaSySuaChaveGerada..."
+    ```
 
-## 🌍 Impacto na Terra
+## Instruções de Execução
 
-Ao antecipar colisões e orientar manobras evasivas, o ORBITAL-IA ajuda a preservar a
-infraestrutura orbital da qual dependem o **monitoramento climático**, a **prevenção de
-desastres**, as **telecomunicações** e a **navegação** — conectando diretamente a economia
-espacial ao bem-estar no planeta.
+1.  **Geração de Dados e Treinamento do Modelo:**
+    ```bash
+    python cardioia_ml.py
+    ```
+    Este script irá gerar a base de dados sintética (`base_cardioia.csv`) e treinar o modelo (`modelo_cardioia.pkl`).
 
-## 🚀 Próximos passos (evolução para produção)
+2.  **Avaliação do Modelo e Simulação:**
+    ```bash
+    python cardioia_evaluation.py
+    ```
+    Este script irá gerar a matriz de confusão (`conf_matrix.png`) e simular a previsão para um novo paciente.
 
-- Substituir os dados sintéticos por fontes reais (**CelesTrak / Space-Track**, dados TLE).
-- Treinar a rede em **PyTorch/TensorFlow** com GPU e mais features (propagação orbital SGP4).
-- Trocar o detector clássico por **YOLO** treinado em imagens orbitais reais.
-- Hospedar o pipeline em **AWS** (ingestão em streaming, inferência serverless) e usar
-  **computação distribuída** para o catálogo completo.
-- Expor um app **mobile (React Native)** com alertas e dashboards em tempo real.
-- Aplicar **criptografia quântica** para proteger os dados sensíveis de telemetria.
+3.  **Execução do Sistema Multiagente:**
+    ```bash
+    python cardioia_agents.py
+    ```
+    Este script demonstrará o fluxo de trabalho completo do sistema multiagente:
+    - Recebe os dados do novo paciente.
+    - O **Agente Orquestrador** coordena o fluxo via **handoffs**.
+    - O **Agente Analista de Risco** consulta o modelo preditivo via **tool** `predict_risk`.
+    - O **Agente Especialista em Protocolos** consulta a base de protocolos via **tool** `get_protocols`.
+    - A resposta final é gerada de forma estruturada.
+    - O histórico de mensagens e o log completo são salvos em `log_sistema.txt`.
 
----
+## Arquitetura do Sistema Multiagente
 
-_POC desenvolvida para fins acadêmicos — Global Solution FIAP 2026.1._
+O sistema utiliza o **OpenAI Agents SDK** com as seguintes funcionalidades:
+
+| Funcionalidade | Implementação |
+|---|---|
+| **Agentes** | 3 agentes definidos com `Agent()`: Orquestrador, Analista de Risco, Especialista em Protocolos |
+| **Handoffs** | Uso de `handoff()` para transferir controle entre o Orquestrador e os agentes especializados |
+| **Tools** | `@function_tool` para `predict_risk` (modelo ML) e `get_protocols` (base de protocolos) |
+| **Histórico de Mensagens** | Registrado via `result.to_input_list()` após execução pelo `Runner` |
+| **Validação de Saída** | Modelo Pydantic `CardioIAOutput` para garantir formato estruturado |
+| **LLM Backend** | Google Gemini (via endpoint OpenAI-compatível) |
+
+## Vídeo Demonstrativo
+
+Um vídeo demonstrando o fluxo completo do sistema (entrada do novo paciente → acionamento dos agentes → geração da resposta final) está disponível no YouTube (não listado):
+
+[Assista ao Vídeo no YouTube](https://youtu.be/KvHgcYQLBPk)
+
