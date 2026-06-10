@@ -214,15 +214,15 @@ async def analyze_patient_endpoint(patient: PatientInput):
         
         import re
         
-        # Expressões regulares para mapear o conteúdo gerado
-        prob_match = re.search(r"\*\*Probabilidade\s+Prevista:\*\*\s*(.+)", final_text, re.IGNORECASE)
-        class_match = re.search(r"\*\*Classificação\s+de\s+Risco:\*\*\s*(.+)", final_text, re.IGNORECASE)
-        just_match = re.search(r"\*\*Justificativa\s+Clínica:\*\*\s*(.+)", final_text, re.IGNORECASE | re.DOTALL)
+        # Expressões regulares tolerantes e flexíveis para mapear o conteúdo gerado
+        prob_match = re.search(r"\*\*(?:Probabilidade(?:\s+Prevista)?|Risco\s+Previsto):\*\*\s*([^\n]+)", final_text, re.IGNORECASE)
+        class_match = re.search(r"\*\*(?:Classificação(?:\s+de\s+Risco)?):\*\*\s*([^\n]+)", final_text, re.IGNORECASE)
+        just_match = re.search(r"\*\*(?:Justificativa(?:\s+Clínica)?):\*\*\s*(.+)", final_text, re.IGNORECASE | re.DOTALL)
         
         if prob_match:
-            probabilidade = prob_match.group(1).strip()
+            probabilidade = prob_match.group(1).strip().replace("*", "")
         if class_match:
-            classificacao = class_match.group(1).strip()
+            classificacao = class_match.group(1).strip().replace("*", "")
         if just_match:
             justificativa = just_match.group(1).strip()
             

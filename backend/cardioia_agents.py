@@ -48,8 +48,8 @@ set_default_openai_api("chat_completions")  # Gemini não suporta Responses API
 set_tracing_disabled(True)                  # Desabilita tracing (não suportado pelo Gemini)
 
 # Modelo Gemini a ser utilizado pelos agentes
-# Usando gemini-2.5-flash-lite (cota gratuita generosa)
-GEMINI_MODEL = "gemini-2.5-flash-lite"
+# Usando gemini-2.5-flash (mais inteligente no suporte a chamadas de funções/handoffs)
+GEMINI_MODEL = "gemini-2.5-flash"
 
 # ---------------------------------------------------------------------------
 # Carregamento do modelo de ML treinado
@@ -133,14 +133,13 @@ def get_protocols(classificacao_risco: str) -> str:
 agente_analista_risco = Agent(
     name="Agente Analista de Risco",
     instructions="""Você é o Agente Analista de Risco da CardioIA.
-Sua função é receber os dados clínicos de um paciente e utilizar a ferramenta
-predict_risk para consultar o modelo preditivo de Machine Learning.
+Sua função é receber os dados clínicos de um paciente e utilizar a ferramenta predict_risk para consultar o modelo preditivo de Machine Learning.
 
-Você DEVE seguir estes passos na ordem:
+Você DEVE seguir estritamente estes passos na ordem:
 1. Chame a ferramenta predict_risk com os dados clínicos do paciente.
-2. Informe o resultado (probabilidade e classificação).
-3. IMEDIATAMENTE após informar o resultado, use a tool retornar_ao_orquestrador
-   para devolver o controle ao Orquestrador.""",
+2. Com o resultado retornado pela ferramenta (que contém a probabilidade e a classificação), chame IMEDIATAMENTE a ferramenta de handoff 'retornar_ao_orquestrador'.
+3. Passe os dados do resultado na chamada de retornar_ao_orquestrador para devolver o controle ao Orquestrador.
+4. ATENÇÃO: NÃO dê nenhuma resposta textual direta ao usuário final e NÃO finalize a conversa por si só. Você deve SEMPRE chamar retornar_ao_orquestrador.""",
     tools=[predict_risk],
     model=GEMINI_MODEL,
 )
@@ -149,14 +148,13 @@ Você DEVE seguir estes passos na ordem:
 agente_especialista_protocolos = Agent(
     name="Agente Especialista em Protocolos",
     instructions="""Você é o Agente Especialista em Protocolos da CardioIA.
-Sua função é receber a classificação de risco de um paciente e utilizar a
-ferramenta get_protocols para consultar a base de protocolos médicos simulados.
+Sua função é receber a classificação de risco de um paciente e utilizar a ferramenta get_protocols para consultar a base de protocolos médicos simulados.
 
-Você DEVE seguir estes passos na ordem:
+Você DEVE seguir estritamente estes passos na ordem:
 1. Chame a ferramenta get_protocols com a classificação de risco recebida.
-2. Informe os protocolos encontrados.
-3. IMEDIATAMENTE após informar os protocolos, use a tool retornar_ao_orquestrador
-   para devolver o controle ao Orquestrador.""",
+2. Com a lista de protocolos retornada pela ferramenta, chame IMEDIATAMENTE a ferramenta de handoff 'retornar_ao_orquestrador'.
+3. Passe a lista de protocolos na chamada de retornar_ao_orquestrador para devolver o controle ao Orquestrador.
+4. ATENÇÃO: NÃO dê nenhuma resposta textual direta ao usuário final e NÃO finalize a conversa por si só. Você deve SEMPRE chamar retornar_ao_orquestrador.""",
     tools=[get_protocols],
     model=GEMINI_MODEL,
 )
@@ -167,30 +165,36 @@ Você DEVE seguir estes passos na ordem:
 # Primeiro, criamos o orquestrador sem handoffs (será atualizado abaixo)
 agente_orquestrador = Agent(
     name="Agente Orquestrador CardioIA",
-    instructions="""Você é o Agente Orquestrador da CardioIA, responsável por coordenar
-o fluxo completo de análise de risco cardíaco.
+    instructions="""Você é o Agente Orquestrador da CardioIA, responsável por coordenar o fluxo completo de análise de risco cardíaco.
 
 Ao receber os dados de um novo paciente, você DEVE seguir exatamente estas etapas na ordem:
 
 ETAPA 1: Use a tool 'transferir_para_analista_risco' para acionar o Agente Analista de Risco.
 ETAPA 2: Use a tool 'transferir_para_especialista_protocolos' para acionar o Agente Especialista em Protocolos.
-ETAPA 3: Compile os resultados e gere a recomendação final estruturada com:
-  - Probabilidade prevista
-  - Classificação de risco
-  - Protocolos sugeridos
-  - Justificativa clínica
+ETAPA 3: Compile todos os resultados coletados nas etapas anteriores e gere a recomendação final estruturada exatamente no seguinte formato markdown (respeitando negritos e rótulos para que o parser da API extraia as informações corretamente):
 
-IMPORTANTE: Você DEVE começar pela ETAPA 1 imediatamente. Não responda nada antes de transferir.""",
+**Probabilidade Prevista:** [Insira aqui o valor da probabilidade calculada pela tool predict_risk, ex: 21.00%]
+**Classificação de Risco:** [Insira aqui a classificação exata da tool predict_risk: 'Alto Risco' ou 'Baixo Risco']
+**Protocolos Sugeridos:**
+[Insira aqui a lista de protocolos médicos retornados pela tool get_protocols em formato de lista markdown com asteriscos, ex:]
+* Protocolo A
+* Protocolo B
+
+**Justificativa Clínica:** [Escreva aqui uma justificativa clínica detalhada explicando os fatores clínicos que levaram a essa classificação de risco, com base na idade, spo2, frequência cardíaca e histórico do paciente.]
+
+IMPORTANTE:
+- Comece pela ETAPA 1 imediatamente ao receber os dados do paciente. Não responda nada antes de realizar a transferência.
+- Garanta que todos os rótulos estejam em negrito exatamente como especificado (ex: **Probabilidade Prevista:**, **Classificação de Risco:**, **Protocolos Sugeridos:**, **Justificativa Clínica:**) para permitir o processamento automático da resposta.""",
     handoffs=[
         handoff(
             agent=agente_analista_risco,
             tool_name_override="transferir_para_analista_risco",
-            tool_description_override="Transfere a conversa para o Agente Analista de Risco para calcular a probabilidade de pico de risco cardíaco do paciente. USE ESTA TOOL PRIMEIRO.",
+            tool_description_override="Transfere a conversa para o Agente Analista de Risco para calcular a probabilidade de risco cardíaco do paciente. USE ESTA TOOL PRIMEIRO.",
         ),
         handoff(
             agent=agente_especialista_protocolos,
             tool_name_override="transferir_para_especialista_protocolos",
-            tool_description_override="Transfere a conversa para o Agente Especialista em Protocolos para consultar os protocolos médicos adequados à classificação de risco.",
+            tool_description_override="Transfere a conversa para o Agente Especialista em Protocolos para consultar os protocolos médicos com base na classificação de risco.",
         ),
     ],
     model=GEMINI_MODEL,

@@ -16,15 +16,14 @@ Agente Final: Agente Orquestrador CardioIA
 ============================================================
    RELATÓRIO FINAL
 ============================================================
-**Recomendação Final de Risco Cardíaco**
+**Probabilidade Prevista:** 90.00%
+**Classificação de Risco:** Alto Risco
+**Protocolos Sugeridos:**
+* Monitoramento contínuo em UTI.
+* Administração imediata de antiagregantes plaquetários.
+* Acionamento da equipe de hemodinâmica.
 
-*   **Probabilidade Prevista:** 90.00%
-*   **Classificação de Risco:** Alto Risco
-*   **Protocolos Sugeridos:**
-    *   Monitoramento contínuo em UTI.
-    *   Administração imediata de antiagregantes plaquetários.
-    *   Acionamento da equipe de hemodinâmica.
-*   **Justificativa Clínica:** O paciente apresenta um quadro de alto risco cardíaco, evidenciado pela probabilidade de 90.00%. Fatores como idade (68 anos), frequência cardíaca elevada (95 bpm), baixa saturação de oxigênio (SPO2 de 92%) e histórico cardíaco contribuem para essa classificação. A recomendação de monitoramento intensivo em UTI, o uso de antiagregantes plaquetários e o acionamento da equipe de hemodinâmica são medidas cruciais para a gestão imediata e prevenção de eventos cardiovasculares agudos nesta condição.
+**Justificativa Clínica:** O paciente apresenta uma combinação de fatores de alto risco, incluindo idade avançada (68 anos), frequência cardíaca elevada (95 bpm), saturação de oxigênio baixa (92% de SpO2) e um histórico cardíaco pré-existente (indicado por 1). Estes elementos contribuem significativamente para a alta probabilidade de risco cardíaco, justificando a classificação de "Alto Risco" e a necessidade de intervenção imediata conforme os protocolos sugeridos.
 
 ============================================================
    HISTÓRICO DE MENSAGENS
