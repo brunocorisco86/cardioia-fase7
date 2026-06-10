@@ -42,7 +42,7 @@ Para guiar o desenvolvimento completo dos entregáveis obrigatórios da **Cardio
   - [x] `/docs` - Enunciados, Diagramas e Relatórios Técnicos
   - [x] `/entregaveis` - Pasta de entregáveis com link do GitHub configurado
   - [x] `/frontend-web` - SPA React + Vite (A ser inicializada)
-  - [ ] `/mobile-app` - React Native + Expo (A ser inicializada)
+  - [x] `/mobile-app` - React Native + Expo (A ser inicializada)
 
 ### 🧠 Etapa 2: Backend Integrador e Modelos de IA
 - [x] **Configuração da API:** Inicializar um servidor FastAPI na pasta `backend/` com rotas para receber telemetria dos sensores e servir as interfaces.
@@ -60,10 +60,10 @@ Para guiar o desenvolvimento completo dos entregáveis obrigatórios da **Cardio
   - [x] Desenvolver o dashboard médico atualizado com gráficos em tempo real e lista de pacientes monitorados.
   - [x] Implementar alertas visuais em caso de risco clínico elevado.
   - [x] Criar o arquivo `vercel.json` configurado para redirecionamento SPA e conectar o repositório ao deploy automático da Vercel.
-- [ ] **Desenvolvimento Mobile (React Native + Expo):**
-  - Implementar tela de login e visualização dos batimentos/temperatura do próprio paciente.
-  - Criar `app.json` (definindo o package Android) e `eas.json` (perfil preview).
-  - Executar o build na nuvem via Expo CLI (`eas build --platform android --profile preview`) para obter o arquivo `.apk`.
+- [x] **Desenvolvimento Mobile (React Native + Expo):**
+  - [x] Implementar tela de login e visualização dos batimentos/temperatura do próprio paciente.
+  - [x] Criar `app.json` (definindo o package Android) e `eas.json` (perfil preview).
+  - [ ] Executar o build na nuvem via Expo CLI (`eas build --platform android --profile preview`) para obter o arquivo `.apk`.
 
 ### 📝 Etapa 5: Documentação Final, Diagrama e Vídeo
 - [ ] **Diagrama de Arquitetura:** Desenhar a arquitetura de ponta a ponta (Sensor -> MicroPython -> API Backend -> IA Modelos/LLM -> Web/Mobile) e salvar em `docs/arquitetura_final.png`.
