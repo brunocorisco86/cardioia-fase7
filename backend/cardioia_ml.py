@@ -53,13 +53,17 @@ def train_model(df):
     return model, metrics, X_test, y_test
 
 if __name__ == "__main__":
+    import os
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     df = generate_synthetic_data()
-    df.to_csv('base_cardioia.csv', index=False)
-    print("Base de dados gerada e salva em 'base_cardioia.csv'.")
+    csv_path = os.path.join(BASE_DIR, 'base_cardioia.csv')
+    df.to_csv(csv_path, index=False)
+    print(f"Base de dados gerada e salva em '{csv_path}'.")
     
     model, metrics, X_test, y_test = train_model(df)
-    joblib.dump(model, 'modelo_cardioia.pkl')
-    print("Modelo treinado e salvo em 'modelo_cardioia.pkl'.")
+    model_path = os.path.join(BASE_DIR, 'modelo_cardioia.pkl')
+    joblib.dump(model, model_path)
+    print(f"Modelo treinado e salvo em '{model_path}'.")
     
     print(f"Acurácia: {metrics['accuracy']:.4f}")
     print("Matriz de Confusão:")

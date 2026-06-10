@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import numpy as np
 import joblib
@@ -5,9 +6,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.metrics import confusion_matrix, classification_report
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 # Carregar modelo e dados
-model = joblib.load('modelo_cardioia.pkl')
-df = pd.read_csv('base_cardioia.csv')
+model = joblib.load(os.path.join(BASE_DIR, 'modelo_cardioia.pkl'))
+df = pd.read_csv(os.path.join(BASE_DIR, 'base_cardioia.csv'))
 
 # 1. Avaliação Visual
 def plot_evaluation(model, df):
@@ -22,8 +25,9 @@ def plot_evaluation(model, df):
     plt.title('Matriz de Confusão - CardioIA')
     plt.ylabel('Real')
     plt.xlabel('Predito')
-    plt.savefig('conf_matrix.png')
-    print("Matriz de confusão salva em 'conf_matrix.png'.")
+    fig_path = os.path.join(BASE_DIR, 'conf_matrix.png')
+    plt.savefig(fig_path)
+    print(f"Matriz de confusão salva em '{fig_path}'.")
 
 # 2. Simulação de Novo Paciente
 def simulate_new_patient(model):

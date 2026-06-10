@@ -7,8 +7,15 @@ from pydantic import BaseModel, Field
 from openai import AsyncOpenAI
 from dotenv import load_dotenv
 
-# Carrega as variáveis de ambiente do arquivo .env
-load_dotenv()
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Carrega as variáveis de ambiente do arquivo .env (na raiz ou localmente)
+env_path_root = os.path.join(BASE_DIR, "..", ".env")
+env_path_local = os.path.join(BASE_DIR, ".env")
+if os.path.exists(env_path_root):
+    load_dotenv(env_path_root)
+else:
+    load_dotenv(env_path_local)
 
 from agents import (
     Agent,
@@ -47,7 +54,7 @@ GEMINI_MODEL = "gemini-2.5-flash-lite"
 # ---------------------------------------------------------------------------
 # Carregamento do modelo de ML treinado
 # ---------------------------------------------------------------------------
-ml_model = joblib.load("modelo_cardioia.pkl")
+ml_model = joblib.load(os.path.join(BASE_DIR, "modelo_cardioia.pkl"))
 
 # ---------------------------------------------------------------------------
 # Modelo Pydantic para validação de saída estruturada
@@ -308,10 +315,11 @@ def main():
                 func_args = tc.get("function", {}).get("arguments", "{}")
                 log_content.append(f"\n[{i}] {role}: chamou tool '{func_name}' com args: {func_args}")
 
-    with open("log_sistema.txt", "w", encoding="utf-8") as f:
+    log_path = os.path.join(BASE_DIR, "log_sistema.txt")
+    with open(log_path, "w", encoding="utf-8") as f:
         f.write("\n".join(log_content))
 
-    print("\n[Sistema] Log salvo em 'log_sistema.txt'.")
+    print(f"\n[Sistema] Log salvo em '{log_path}'.")
 
 
 if __name__ == "__main__":
