@@ -71,23 +71,33 @@ e IA generativa** em um único pipeline que:
 ## 📁 Estrutura do projeto
 
 ```
-orbital-ia/
-├── main.py                 # orquestrador: roda toda a POC
-├── requirements.txt
-├── README.md
-├── src/
-│   ├── dados.py            # pipeline de dados (catálogo + conjunções)
-│   ├── modelo.py           # rede neural de risco de colisão
-│   ├── visao.py            # visão computacional (detecção de objetos)
-│   ├── agentes.py          # sistema multiagente
-│   └── genai.py            # IA generativa / NLP (briefing)
-├── docs/
-│   └── arquitetura.svg     # diagrama de arquitetura
-└── outputs/                # gerado ao executar
-    ├── dashboard.html      # painel visual
-    ├── briefing.txt        # briefing por IA generativa
-    ├── resultados.json     # métricas e recomendações
-    └── *.png               # gráficos
+.
+├── main.py                 # Orquestrador principal da POC
+├── requirements.txt        # Dependências do projeto (incluindo pytest)
+├── README.md               # Documentação principal
+├── .gitignore              # Arquivos ignorados pelo Git
+├── docs/                   # Documentações auxiliares
+│   ├── arquitetura.svg     # Diagrama de arquitetura
+│   ├── enunciado_cap7_cardioia.md
+│   └── roadmap.md          # Avaliação de completude e plano de ação
+├── src/                    # Módulos principais em Python
+│   ├── dados.py            # Geração de catálogo orbital e conjunções
+│   ├── modelo.py           # Rede neural MLP (risco de colisão)
+│   ├── visao.py            # Detecção de objetos por Visão Computacional (OpenCV)
+│   ├── agentes.py          # Sistema Multiagente (Monitor, Analista, Decisor)
+│   └── genai.py            # IA Generativa para briefing operacional (offline/online)
+├── tests/                  # Suíte de testes automatizados (pytest)
+│   ├── conftest.py         # Fixtures globais e configuração de path
+│   ├── test_dados.py       # Testes do gerador de dados
+│   ├── test_modelo.py      # Testes da rede neural
+│   ├── test_visao.py       # Testes da visão computacional (OpenCV)
+│   ├── test_agentes.py     # Testes do sistema multiagente
+│   └── test_genai.py       # Testes do briefing por IA Generativa
+└── outputs/                # Artefatos gerados na execução
+    ├── dashboard.html      # Painel visual consolidado
+    ├── briefing.txt        # Briefing de missão gerado por IA
+    ├── resultados.json     # JSON contendo métricas e logs
+    └── *.png               # Gráficos de suporte do dashboard
 ```
 
 ## ▶️ Como executar
