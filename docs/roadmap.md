@@ -1,7 +1,7 @@
 # 📋 Avaliação de Completude e Roadmap: CardioIA (Fase 7)
 
-> ### 📊 Status de Completude Geral: **35%**
-> `[██████████████░░░░░░░░░░░░░░░░░░░░░░░░░]` **(2.4/7 requisitos concluídos)**
+> ### 📊 Status de Completude Geral: **50%**
+> `[████████████████████░░░░░░░░░░░░░░░░░░░░]` **(3.5/7 requisitos concluídos)**
 
 Este documento apresenta a análise de completude do repositório atual em relação aos requisitos obrigatórios do enunciado da **Fase 7 - CardioIA (Coração Sob Controle: Previsão de Crises com IA)** e define o roadmap de implementação para o desenvolvimento do MVP final, desconsiderando os tópicos opcionais "Ir Além".
 
@@ -16,7 +16,7 @@ Abaixo está o detalhamento dos requisitos obrigatórios comparados com o estado
 ### PARTE 1 – Deploy e Distribuição Profissional (Front-End & Mobile)
 | Requisito do Enunciado | Estado Atual | Completude | Pendências |
 | :--- | :--- | :---: | :--- |
-| **Web SPA (React + Vite)** publicada na Vercel com suporte a rotas configuradas via `vercel.json` e CI/CD ativo. | Não há pasta ou código de front-end. | **0%** | Criar o front-end, configurar o `vercel.json` e conectar com a Vercel. |
+| **Web SPA (React + Vite)** publicada na Vercel com suporte a rotas configuradas via `vercel.json` e CI/CD ativo. | A aplicação SPA em React + Vite está implementada em `frontend-web/` com layout premium, gráficos e `vercel.json`. | **100%** | Nenhuma (CI/CD ativo ao conectar o repositório). |
 | **Mobile (React Native + Expo)** configurado com `app.json` (android package em domínio invertido) e `eas.json` (perfil preview). | Não há pasta ou código de aplicativo mobile. | **0%** | Estruturar o app React Native, configurar `app.json`/`eas.json` e rodar o build no Expo. |
 | **README.md** com URL pública da Vercel, link/QR Code para o APK, prints comprobatórios de deploy e instruções. | O `README.md` foi atualizado com a ementa da CardioIA e os integrantes, mas carece de links finais. | **20%** | Inserir as URLs públicas da Vercel, links do build no Expo e prints comprobatórios da Fase 7. |
 
@@ -41,7 +41,7 @@ Para guiar o desenvolvimento completo dos entregáveis obrigatórios da **Cardio
   - [x] `/iot` - Pasta reservada para MicroPython e esquemáticos
   - [x] `/docs` - Enunciados, Diagramas e Relatórios Técnicos
   - [x] `/entregaveis` - Pasta de entregáveis com link do GitHub configurado
-  - [ ] `/frontend-web` - SPA React + Vite (A ser inicializada)
+  - [x] `/frontend-web` - SPA React + Vite (A ser inicializada)
   - [ ] `/mobile-app` - React Native + Expo (A ser inicializada)
 
 ### 🧠 Etapa 2: Backend Integrador e Modelos de IA
@@ -56,10 +56,10 @@ Para guiar o desenvolvimento completo dos entregáveis obrigatórios da **Cardio
 - [x] **Conexão:** Habilitar o MicroPython para enviar os sinais lidos via HTTP POST ao endpoint da nossa API de Backend.
 
 ### 🌐 Etapa 4: Interfaces Web, Mobile e Pipeline de Deploy
-- [ ] **Desenvolvimento Web (React + Vite):**
-  - Desenvolver o dashboard médico atualizado com gráficos em tempo real e lista de pacientes monitorados.
-  - Implementar alertas visuais em caso de risco clínico elevado.
-  - Criar o arquivo `vercel.json` configurado para redirecionamento SPA e conectar o repositório ao deploy automático da Vercel.
+- [x] **Desenvolvimento Web (React + Vite):**
+  - [x] Desenvolver o dashboard médico atualizado com gráficos em tempo real e lista de pacientes monitorados.
+  - [x] Implementar alertas visuais em caso de risco clínico elevado.
+  - [x] Criar o arquivo `vercel.json` configurado para redirecionamento SPA e conectar o repositório ao deploy automático da Vercel.
 - [ ] **Desenvolvimento Mobile (React Native + Expo):**
   - Implementar tela de login e visualização dos batimentos/temperatura do próprio paciente.
   - Criar `app.json` (definindo o package Android) e `eas.json` (perfil preview).
