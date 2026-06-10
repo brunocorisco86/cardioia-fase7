@@ -4,6 +4,8 @@ __pycache__/
 *.pyo
 venv/
 .venv/
+node_modules/
+.expo/
 
 # Arquivo de variáveis de ambiente (contém API key)
 .env

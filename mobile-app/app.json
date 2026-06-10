@@ -23,6 +23,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "581baaf7-7e6b-46e4-a157-0b3a8f593b98"
+      }
+    },
+    "owner": "brunocorisco"
   }
 }
