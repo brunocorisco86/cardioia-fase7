@@ -1,7 +1,7 @@
 # 📋 Avaliação de Completude e Roadmap: CardioIA (Fase 7)
 
-> ### 📊 Status de Completude Geral: **20%**
-> `[████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]` **(1.4/7 requisitos concluídos)**
+> ### 📊 Status de Completude Geral: **35%**
+> `[██████████████░░░░░░░░░░░░░░░░░░░░░░░░░]` **(2.4/7 requisitos concluídos)**
 
 Este documento apresenta a análise de completude do repositório atual em relação aos requisitos obrigatórios do enunciado da **Fase 7 - CardioIA (Coração Sob Controle: Previsão de Crises com IA)** e define o roadmap de implementação para o desenvolvimento do MVP final, desconsiderando os tópicos opcionais "Ir Além".
 
@@ -23,8 +23,8 @@ Abaixo está o detalhamento dos requisitos obrigatórios comparados com o estado
 ### PARTE 2 – Integração do Ecossistema e Arquitetura Final
 | Requisito do Enunciado | Estado Atual | Completude | Pendências |
 | :--- | :--- | :---: | :--- |
-| **Back-end Integrador (Python)** conectando as interfaces (Front-end) aos motores de IA (Fase 6) e LLMs (Fase 5). | Os algoritmos de IA e Agentes em Python estão na raiz (`cardioia_agents.py`, `cardioia_ml.py`). Faltam endpoints HTTP. | **40%** | Criar um servidor API (FastAPI/Flask) e expor os algoritmos de predição de risco e consulta de protocolos de saúde. |
-| **Transição para MicroPython** da lógica de sensores (temperatura e batimentos cardíacos simulados) na pasta `IoT`. | Não há pasta `IoT` ou scripts MicroPython no repositório. | **0%** | Escrever a lógica em MicroPython e criar o script `.py` dedicado na pasta `IoT`. |
+| **Back-end Integrador (Python)** conectando as interfaces (Front-end) aos motores de IA (Fase 6) e LLMs (Fase 5). | O servidor API (FastAPI) está implementado em `backend/app.py` integrando modelo ML, sistema de agentes e recepção de telemetria. | **100%** | Nenhuma. |
+| **Transição para MicroPython** da lógica de sensores (temperatura e batimentos cardíacos simulados) na pasta `IoT`. | O script de firmware compatível com MicroPython está desenvolvido em `iot/main.py`. | **100%** | Nenhuma. |
 | **Projeto Wokwi** (link público da simulação em MicroPython demonstrando a leitura e alertas com LED/OLED). | Não há referências a simulação IoT ou link do Wokwi. | **0%** | Montar a simulação no Wokwi e obter o link do projeto compartilhado. |
 | **Relatório Técnico (PDF)** de até 5 páginas com Diagrama de Arquitetura Final (fluxo fim-a-fim) e link do vídeo de 5 min. | Existem os relatórios PDF da Fase 6. | **0% (Fase 7)** | Modelar o diagrama técnico da arquitetura integrada da Fase 7, produzir o PDF e gravar o vídeo. |
 
@@ -45,15 +45,15 @@ Para guiar o desenvolvimento completo dos entregáveis obrigatórios da **Cardio
   - [ ] `/mobile-app` - React Native + Expo (A ser inicializada)
 
 ### 🧠 Etapa 2: Backend Integrador e Modelos de IA
-- [ ] **Configuração da API:** Inicializar um servidor FastAPI na pasta `backend/` com rotas para receber telemetria dos sensores e servir as interfaces.
-- [ ] **Integração do Modelo Preditivo:** Adaptar o `cardioia_evaluation.py` para rodar como ferramenta exposta na API da CardioIA.
-- [ ] **Adaptação dos Agentes:** Exportar o Runner do `cardioia_agents.py` para processar chamadas dinâmicas a partir de requisições do front-end.
+- [x] **Configuração da API:** Inicializar um servidor FastAPI na pasta `backend/` com rotas para receber telemetria dos sensores e servir as interfaces.
+- [x] **Integração do Modelo Preditivo:** Adaptar o `cardioia_evaluation.py` para rodar como ferramenta exposta na API da CardioIA.
+- [x] **Adaptação dos Agentes:** Exportar o Runner do `cardioia_agents.py` para processar chamadas dinâmicas a partir de requisições do front-end.
 
 ### 🔌 Etapa 3: Hardware, MicroPython e Simulação IoT
-- [ ] **Lógica do Dispositivo:** Desenvolver em `iot/main.py` o script compatível com MicroPython para rodar no Raspberry Pi Pico W ou ESP32.
-- [ ] **Captura de Sinais:** Escrever a lógica de leitura simulada dos sensores de temperatura e batimentos cardíacos.
+- [x] **Lógica do Dispositivo:** Desenvolver em `iot/main.py` o script compatível com MicroPython para rodar no Raspberry Pi Pico W ou ESP32.
+- [x] **Captura de Sinais:** Escrever a lógica de leitura simulada dos sensores de temperatura e batimentos cardíacos.
 - [ ] **Simulação no Wokwi:** Montar a placa com leitor de temperatura (ex: DHT22), potenciômetro (simulando batimentos), display OLED (para feedbacks locais) e leds/buzzer de alerta.
-- [ ] **Conexão:** Habilitar o MicroPython para enviar os sinais lidos via HTTP POST ao endpoint da nossa API de Backend.
+- [x] **Conexão:** Habilitar o MicroPython para enviar os sinais lidos via HTTP POST ao endpoint da nossa API de Backend.
 
 ### 🌐 Etapa 4: Interfaces Web, Mobile e Pipeline de Deploy
 - [ ] **Desenvolvimento Web (React + Vite):**
