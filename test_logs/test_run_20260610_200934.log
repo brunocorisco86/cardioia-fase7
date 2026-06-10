@@ -1,0 +1,116 @@
+=========================================================
+   CARDIOIA - RELATÓRIO DE TESTES AUTOMATIZADOS
+   Executado em: qua 10 jun 2026 20:09:34 -03
+=========================================================
+
+--- [1/3] Backend Tests (pytest) ---
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.3, pluggy-1.6.0
+rootdir: /home/brunoconter/Documentos/5_ESTUDO/1 - FIAP/2 - ATIVIDADES/2 ANO/FASE 7/cardioia-fase7
+plugins: anyio-4.13.0
+collected 8 items
+
+backend/tests/test_app.py ........                                       [100%]
+
+=============================== warnings summary ===============================
+backend/venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /home/brunoconter/Documentos/5_ESTUDO/1 - FIAP/2 - ATIVIDADES/2 ANO/FASE 7/cardioia-fase7/backend/venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+backend/venv/lib/python3.12/site-packages/sklearn/base.py:525
+backend/venv/lib/python3.12/site-packages/sklearn/base.py:525
+  /home/brunoconter/Documentos/5_ESTUDO/1 - FIAP/2 - ATIVIDADES/2 ANO/FASE 7/cardioia-fase7/backend/venv/lib/python3.12/site-packages/sklearn/base.py:525: InconsistentVersionWarning: Trying to unpickle estimator DecisionTreeClassifier from version 1.8.0 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+  https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+    warnings.warn(
+
+backend/venv/lib/python3.12/site-packages/sklearn/base.py:525
+backend/venv/lib/python3.12/site-packages/sklearn/base.py:525
+  /home/brunoconter/Documentos/5_ESTUDO/1 - FIAP/2 - ATIVIDADES/2 ANO/FASE 7/cardioia-fase7/backend/venv/lib/python3.12/site-packages/sklearn/base.py:525: InconsistentVersionWarning: Trying to unpickle estimator RandomForestClassifier from version 1.8.0 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+  https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================== 8 passed, 5 warnings in 2.13s =========================
+Status: SUCESSO
+
+--- [2/3] Frontend Web Tests (node --test) ---
+TAP version 13
+# Subtest: Verifica se a pasta dist foi criada no build
+ok 1 - Verifica se a pasta dist foi criada no build
+  ---
+  duration_ms: 0.724682
+  type: 'test'
+  ...
+# Subtest: Verifica se o index.html gerado é válido
+ok 2 - Verifica se o index.html gerado é válido
+  ---
+  duration_ms: 0.263111
+  type: 'test'
+  ...
+# Subtest: Verifica integridade do vercel.json para SPA
+ok 3 - Verifica integridade do vercel.json para SPA
+  ---
+  duration_ms: 0.260716
+  type: 'test'
+  ...
+# Subtest: Verifica se o código fonte React está integrado com endpoints de API
+ok 4 - Verifica se o código fonte React está integrado com endpoints de API
+  ---
+  duration_ms: 0.891132
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 50.420578
+Status: SUCESSO
+
+--- [3/3] Mobile App Tests (node --test) ---
+TAP version 13
+# Subtest: Verifica se as configurações do Expo em app.json são válidas para Android
+ok 1 - Verifica se as configurações do Expo em app.json são válidas para Android
+  ---
+  duration_ms: 0.836972
+  type: 'test'
+  ...
+# Subtest: Verifica se o perfil de build preview em eas.json está configurado para APK
+ok 2 - Verifica se o perfil de build preview em eas.json está configurado para APK
+  ---
+  duration_ms: 0.189303
+  type: 'test'
+  ...
+# Subtest: Verifica integridade física dos assets e imagens de publicação
+ok 3 - Verifica integridade física dos assets e imagens de publicação
+  ---
+  duration_ms: 0.88972
+  type: 'test'
+  ...
+# Subtest: Verifica se o aplicativo mobile está integrado com a API do backend CardioIA
+ok 4 - Verifica se o aplicativo mobile está integrado com a API do backend CardioIA
+  ---
+  duration_ms: 0.39167
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 54.351229
+Status: SUCESSO
+
+=========================================================
+                   RESUMO DOS TESTES                     
+=========================================================
+Backend:         PASSOU
+Frontend Web:    PASSOU
+Mobile App:      PASSOU
+=========================================================

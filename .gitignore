@@ -11,3 +11,7 @@ venv/
 # Arquivos do sistema
 .DS_Store
 Thumbs.db
+
+# Logs locais
+backend/output.log
+
