@@ -13,6 +13,22 @@ from app import app
 
 client = TestClient(app)
 
+def test_google_api_key_environment():
+    """Valida se a variável de ambiente GOOGLE_API_KEY está devidamente configurada e válida."""
+    from dotenv import load_dotenv
+    # Carrega do arquivo .env a partir da raiz do projeto (pai de BACKEND_DIR) ou localmente
+    ROOT_DIR = os.path.dirname(BACKEND_DIR)
+    dotenv_path = os.path.join(ROOT_DIR, ".env")
+    if not os.path.exists(dotenv_path):
+        dotenv_path = os.path.join(BACKEND_DIR, ".env")
+    load_dotenv(dotenv_path)
+    
+    api_key = os.environ.get("GOOGLE_API_KEY", "")
+    
+    assert api_key != "", "A variável de ambiente GOOGLE_API_KEY está vazia no arquivo .env."
+    assert api_key != "SUA_CHAVE_AQUI", "A chave GOOGLE_API_KEY possui o valor placeholder padrão 'SUA_CHAVE_AQUI'."
+    assert len(api_key) > 30, "A chave GOOGLE_API_KEY configurada é muito curta para ser um token válido do Gemini."
+
 def test_read_root():
     """Valida a rota de health check inicial da API."""
     response = client.get("/")
