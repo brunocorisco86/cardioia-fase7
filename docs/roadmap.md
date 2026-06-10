@@ -1,5 +1,8 @@
 # 📋 Avaliação de Completude e Roadmap: CardioIA (Fase 7)
 
+> ### 📊 Status de Completude Geral: **0%**
+> `[░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]` **(0/7 requisitos concluídos)**
+
 Este documento apresenta a análise de completude do repositório atual em relação aos requisitos obrigatórios do enunciado da **Fase 7 - CardioIA (Coração Sob Controle: Previsão de Crises com IA)** e define o roadmap de implementação para o desenvolvimento do MVP final, desconsiderando os tópicos opcionais "Ir Além".
 
 ---
