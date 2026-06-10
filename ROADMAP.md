@@ -1,14 +1,14 @@
 # 📋 Avaliação de Completude e Roadmap: CardioIA (Fase 7)
 
-Este documento apresenta a análise de completude do repositório atual em relação aos requisitos do enunciado da **Fase 7 - CardioIA (Coração Sob Controle: Previsão de Crises com IA)** e define o roadmap detalhado de implementação para o desenvolvimento do MVP final.
+Este documento apresenta a análise de completude do repositório atual em relação aos requisitos obrigatórios do enunciado da **Fase 7 - CardioIA (Coração Sob Controle: Previsão de Crises com IA)** e define o roadmap de implementação para o desenvolvimento do MVP final, desconsiderando os tópicos opcionais "Ir Além".
 
 ---
 
 ## 📊 1. Avaliação de Completude do Repositório
 
-Atualmente, o repositório contém a base do projeto **ORBITAL-IA** (voltado ao monitoramento de detritos espaciais e previsão de colisões orbitais). Por se tratar de um tema e código distintos do escopo da **CardioIA**, a taxa de completude geral para a entrega exigida é de **0%**. 
+Atualmente, o repositório contém o código do projeto **ORBITAL-IA** (monitoramento de detritos espaciais). Por se tratar de um escopo totalmente distinto do projeto da **CardioIA**, a completude das metas obrigatórias da Fase 7 é de **0%**. 
 
-Abaixo está o detalhamento item a item confrontando as exigências do enunciado com o estado atual:
+Abaixo está o detalhamento dos requisitos obrigatórios comparados com o estado atual:
 
 ### PARTE 1 – Deploy e Distribuição Profissional (Front-End & Mobile)
 | Requisito do Enunciado | Estado Atual | Completude | Pendências |
@@ -25,23 +25,11 @@ Abaixo está o detalhamento item a item confrontando as exigências do enunciado
 | **Projeto Wokwi** (link público da simulação em MicroPython demonstrando a leitura e alertas com LED/OLED). | Não há referências a simulação IoT ou link do Wokwi. | **0%** | Montar a simulação no Wokwi e obter o link do projeto compartilhado. |
 | **Relatório Técnico (PDF)** de até 5 páginas com Diagrama de Arquitetura Final (fluxo fim-a-fim) e link do vídeo de 5 min. | Arquivo não existente. | **0%** | Modelar o diagrama técnico de arquitetura, produzir o relatório e gravar a demonstração em vídeo. |
 
-### IR ALÉM 1 – Mineração de Processos e Conformidade Clínica (AIRPA)
-| Requisito do Enunciado | Estado Atual | Completude | Pendências |
-| :--- | :--- | :---: | :--- |
-| **Notebook Python (pm4py)** processando logs de eventos de IAM, detectando variantes, gargalos e tempo de ciclo. | Não há notebooks ou conjuntos de dados de mineração de processos. | **0%** | Criar o notebook implementando a biblioteca `pm4py` com logs de evento de infarto (IAM). |
-| **Relatório Técnico (PDF 2 páginas)** explicando as variantes clínicas e os impactos de conformidade detectados. | Não há relatório específico sobre mineração de processos. | **0%** | Elaborar o relatório técnico de processos baseado nos resultados gerados no notebook. |
-
-### IR ALÉM 2 – Recuperação de Casos com Embeddings Visuais (CBIR)
-| Requisito do Enunciado | Estado Atual | Completude | Pendências |
-| :--- | :--- | :---: | :--- |
-| **Notebook Google Colab** implementando pipeline CBIR para busca de similaridade em radiografias de tórax e Precision@K. | Não há notebooks de visão computacional voltados à recuperação de imagens médicas por similaridade. | **0%** | Construir o notebook de extração de embeddings, indexação vetorial e cálculo de Precision@K. |
-| **Relatório Técnico (PDF 2 páginas)** com resultados visuais da busca, análise qualitativa e limitações do modelo. | Arquivo não existente. | **0%** | Escrever a análise de vizinhos próximos e limitações do modelo de embeddings visuais. |
-
 ---
 
 ## 🗺️ 2. Roadmap de Implementação Proposto
 
-Para guiar a transição e o desenvolvimento completo do ecossistema **CardioIA**, sugere-se a divisão do projeto nas 6 etapas abaixo:
+Para guiar o desenvolvimento completo dos entregáveis obrigatórios da **CardioIA**, o projeto foi estruturado em 5 etapas principais:
 
 ### 📂 Etapa 1: Estruturação do Repositório (Limpeza e Arquitetura de Pastas)
 - [ ] Criar a estrutura física de diretórios para segmentar responsabilidades:
@@ -49,7 +37,6 @@ Para guiar a transição e o desenvolvimento completo do ecossistema **CardioIA*
   - `/frontend-web` - SPA React + Vite
   - `/mobile-app` - React Native + Expo
   - `/iot` - Código MicroPython e esquemáticos
-  - `/analytics` - Notebooks das seções 'Ir Além' (Process Mining e CBIR)
   - `/docs` - Enunciados, Diagramas e Relatórios Técnicos
 
 ### 🧠 Etapa 2: Backend Integrador e Modelos de IA
@@ -73,18 +60,8 @@ Para guiar a transição e o desenvolvimento completo do ecossistema **CardioIA*
   - Criar `app.json` (definindo o package Android) e `eas.json` (perfil preview).
   - Executar o build na nuvem via Expo CLI (`eas build --platform android --profile preview`) para obter o arquivo `.apk`.
 
-### 📊 Etapa 5: Implementação dos Módulos "Ir Além" (AIRPA & CBIR)
-- [ ] **Mineração de Processos (AIRPA):**
-  - Gerar ou estruturar um arquivo CSV/event log simulando o protocolo de atendimento de Infarto Agudo do Miocárdio (IAM).
-  - Implementar um Jupyter Notebook em `analytics/process_mining.ipynb` aplicando a biblioteca `pm4py`.
-  - Gerar gráficos de variantes de fluxo (Heuristics Net, Petri Net) e realizar a análise de conformidade clínica.
-- [ ] **Recuperação de Casos por Imagem (CBIR):**
-  - Criar o notebook `analytics/cbir_chest_xray.ipynb`.
-  - Configurar a extração de embeddings visuais de radiografias de tórax usando um modelo de visão computacional pré-treinado (ex: ResNet50 ou MobileNetV2).
-  - Indexar embeddings e programar a busca por similaridade de cosseno, avaliando o algoritmo com a métrica Precision@K.
-
-### 📝 Etapa 6: Documentação Final, Diagrama e Vídeo
+### 📝 Etapa 5: Documentação Final, Diagrama e Vídeo
 - [ ] **Diagrama de Arquitetura:** Desenhar a arquitetura de ponta a ponta (Sensor -> MicroPython -> API Backend -> IA Modelos/LLM -> Web/Mobile) e salvar em `docs/arquitetura_final.png`.
-- [ ] **Relatórios em PDF:** Redigir os relatórios técnicos obrigatórios (Geral, AIRPA e CBIR) e salvar em `docs/`.
+- [ ] **Relatório Técnico em PDF:** Redigir o relatório técnico obrigatório (máximo de 5 páginas) e salvar em `docs/`.
 - [ ] **Vídeo de Demonstração:** Gravar uma demonstração em vídeo (até 5 minutos) evidenciando a simulação no Wokwi alterando os dados de saúde, a chamada na API de Backend gerando a predição, e os dashboards web/mobile se atualizando em tempo real.
 - [ ] **Atualização do README:** Consolidar todas as informações no `README.md` principal do repositório, incluindo os links de deploy Vercel, link de download do APK e link de acesso ao Wokwi.
