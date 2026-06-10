@@ -5,7 +5,7 @@
   "parts": [
     { "type": "board-esp32-devkit-c-v4", "id": "esp32", "top": -48, "left": -28.4, "attrs": {} },
     { "type": "wokwi-potentiometer", "id": "pot", "top": -156.4, "left": -192, "attrs": {} },
-    { "type": "wokwi-ssd1306", "id": "oled", "top": -220.8, "left": 105.8, "attrs": {} },
+    { "type": "board-ssd1306", "id": "oled", "top": -220.8, "left": 105.8, "attrs": {} },
     { "type": "wokwi-led", "id": "led_red", "top": 140, "left": -170, "attrs": { "color": "red" } },
     { "type": "wokwi-led", "id": "led_green", "top": 140, "left": -100, "attrs": { "color": "green" } },
     { "type": "wokwi-buzzer", "id": "buzzer", "top": 140, "left": 60, "attrs": {} },
