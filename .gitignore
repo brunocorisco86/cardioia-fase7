@@ -17,3 +17,7 @@ Thumbs.db
 # Logs locais
 backend/output.log
 
+# Builds locais e binários do aplicativo
+builds/
+
+
