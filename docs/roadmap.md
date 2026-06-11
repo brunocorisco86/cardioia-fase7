@@ -1,7 +1,7 @@
 # 📋 Avaliação de Completude e Roadmap: CardioIA (Fase 7)
 
-> ### 📊 Status de Completude Geral: **95%**
-> `[████████████████████████████████████████]` **(6.6/7 requisitos concluídos)**
+> ### 📊 Status de Completude Geral: **97%**
+> `[████████████████████████████████████████]` **(6.8/7 requisitos concluídos)**
 
 Este documento apresenta a análise de completude do repositório atual em relação aos requisitos obrigatórios do enunciado da **Fase 7 - CardioIA (Coração Sob Controle: Previsão de Crises com IA)** e define o roadmap de implementação para o desenvolvimento do MVP final, desconsiderando os tópicos opcionais "Ir Além".
 
@@ -25,8 +25,8 @@ Abaixo está o detalhamento dos requisitos obrigatórios comparados com o estado
 | :--- | :--- | :---: | :--- |
 | **Back-end Integrador (Python)** conectando as interfaces (Front-end) aos motores de IA (Fase 6) e LLMs (Fase 5). | O servidor API (FastAPI) está em `backend/app.py` integrando modelo ML, sistema de agentes e recepção de telemetria. | **100%** | Nenhuma. |
 | **Transição para MicroPython** da lógica de sensores (temperatura e batimentos cardíacos simulados) na pasta `IoT`. | O script de firmware compatível com MicroPython está em `iot/main.py` com controle de OLED, LEDs e Buzzer. | **100%** | Nenhuma. |
-| **Projeto Wokwi** (link público da simulação em MicroPython demonstrando a leitura e alertas com LED/OLED). | Simulação testada e montada no Wokwi com conexões esquematizadas em `diagram.json`, exibindo telemetria e alertas locais. | **100%** | Compartilhar o link do projeto gerado na entrega. |
-| **Relatório Técnico (PDF)** de até 5 páginas com Diagrama de Arquitetura Final (fluxo fim-a-fim) e link do vídeo de 5 min. | Esboço em markdown estruturado com diagrama Mermaid criado em `docs/relatorio_tecnico_fase7.md`. | **50%** | Exportar o PDF via Dillinger, salvar na pasta `entregaveis/` e gravar o vídeo. |
+| **Projeto Wokwi** (link público da simulação em MicroPython demonstrando a leitura e alertas com LED/OLED). | Simulação testada e montada no Wokwi com conexões esquematizadas em `diagram.json`, exibindo telemetria e alertas locais. | **100%** | Nenhuma (link compartilhado: https://wokwi.com/projects/305569065545499202). |
+| **Relatório Técnico (PDF)** de até 5 páginas com Diagrama de Arquitetura Final (fluxo fim-a-fim) e link do vídeo de 5 min. | PDF final gerado com o diagrama Mermaid integrado e salvo em `entregaveis/relatorio_tecnico_cardioia_phase_seven.pdf`. | **95%** | Gravar e inserir o link do vídeo demonstrativo de 5 min. |
 
 ---
 
