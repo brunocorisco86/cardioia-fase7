@@ -157,7 +157,7 @@ Desenvolvido com **React Native** e **Expo SDK 51** (código e configurações l
 
 *   **Repositório GitHub (Privado):** [Link do Repositório](https://github.com/brunocorisco86/cardioia-fase7)
 *   **URL Pública do Frontend (Vercel):** _[A preencher após o deploy]_
-*   **Build Mobile (.apk no Expo):** [Download do APK no Expo](https://expo.dev/accounts/brunocorisco/projects/cardioia-mobile/builds/72893e48-4b6b-4a4e-9b21-bde6a3d4ec6a)
+*   **Build Mobile (.apk no Expo):** [Download do APK no Expo](https://expo.dev/accounts/brunocorisco/projects/cardioia-mobile/builds/e69d551a-7ae0-410f-83f5-e48e65411c0b)
 *   **Simulação do Hardware (Wokwi):** _[A preencher após a montagem do circuito]_
 *   **Vídeo Demonstrativo (Até 5 min):** _[A preencher após a gravação]_
 
