@@ -151,6 +151,14 @@ Desenvolvido com **React Native** e **Expo SDK 51** (código e configurações l
 - **Integração de IA**: Botão para chamar a inferência clássica (Machine Learning) e a análise avançada (sistema multiagente da CardioIA).
 - **Configuração de Publicação**: Identificador Android configurado como `br.com.fiap.cardioia` e EAS Build configurado com perfil `preview` para empacotamento em formato `.apk`.
 
+### 📸 Telas do Aplicativo Móvel
+
+O aplicativo possui uma interface rica e intuitiva, configurada com um tema escuro para facilitar a leitura rápida de dados médicos:
+
+| Área de Acesso (Login) | Painel e Triagem de IA (Dashboard) |
+| :---: | :---: |
+| ![CardioIA Mobile - Login](./images/CardioAI_app_1.png) | ![CardioIA Mobile - Dashboard](./images/CardioAI_app_2.png) |
+
 ---
 
 ## 🚀 Links de Entrega (Fase 7)

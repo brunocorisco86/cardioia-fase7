@@ -1,7 +1,7 @@
 # 📋 Avaliação de Completude e Roadmap: CardioIA (Fase 7)
 
-> ### 📊 Status de Completude Geral: **90%**
-> `[██████████████████████████████████████░░]` **(6.3/7 requisitos concluídos)**
+> ### 📊 Status de Completude Geral: **91%**
+> `[██████████████████████████████████████░░]` **(6.4/7 requisitos concluídos)**
 
 Este documento apresenta a análise de completude do repositório atual em relação aos requisitos obrigatórios do enunciado da **Fase 7 - CardioIA (Coração Sob Controle: Previsão de Crises com IA)** e define o roadmap de implementação para o desenvolvimento do MVP final, desconsiderando os tópicos opcionais "Ir Além".
 
@@ -18,7 +18,7 @@ Abaixo está o detalhamento dos requisitos obrigatórios comparados com o estado
 | :--- | :--- | :---: | :--- |
 | **Web SPA (React + Vite)** publicada na Vercel com suporte a rotas configuradas via `vercel.json` e CI/CD ativo. | A aplicação SPA em React + Vite está em `frontend-web/` com layout premium, gráficos e `vercel.json`. | **100%** | Nenhuma (CI/CD ativo ao conectar o repositório). |
 | **Mobile (React Native + Expo)** configurado com `app.json` (android package em domínio invertido) e `eas.json` (perfil preview). | O aplicativo móvel está em `mobile-app/` com tela de login, telemetria em tempo real, evolução e predições integradas com a API. | **100%** | Nenhuma (build gerado com sucesso via EAS). |
-| **README.md** com URL pública da Vercel, link/QR Code para o APK, prints comprobatórios de deploy e instruções. | O README.md foi atualizado com a ementa da CardioIA, a plataforma web (com captura do painel), a arquitetura do circuito IoT e as capturas de tela da simulação física em funcionamento. | **85%** | Inserir os links da Vercel, Expo e vídeo após as gerações finais. |
+| **README.md** com URL pública da Vercel, link/QR Code para o APK, prints comprobatórios de deploy e instruções. | O README.md foi atualizado com a ementa da CardioIA, a plataforma web (com captura do painel), o aplicativo móvel (com prints do login e dashboard), a arquitetura do circuito IoT e as capturas de tela da simulação física em funcionamento. | **90%** | Inserir os links da Vercel, Expo e vídeo após as gerações finais. |
 
 ### PARTE 2 – Integração do Ecossistema e Arquitetura Final
 | Requisito do Enunciado | Estado Atual | Completude | Pendências |
