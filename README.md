@@ -167,5 +167,5 @@ O aplicativo possui uma interface rica e intuitiva, configurada com um tema escu
 *   **URL Pública do Frontend (Vercel):** [https://cardioia-fase7-mauve.vercel.app/](https://cardioia-fase7-mauve.vercel.app/)
 *   **Build Mobile (.apk no Expo):** [Download do APK no Expo](https://expo.dev/accounts/brunocorisco/projects/cardioia-mobile/builds/e69d551a-7ae0-410f-83f5-e48e65411c0b)
 *   **Simulação do Hardware (Wokwi):** [Projeto de Simulação no Wokwi](https://wokwi.com/projects/305569065545499202)
-*   **Vídeo Demonstrativo (Até 5 min):** _[A preencher após a gravação]_
+*   **Vídeo Demonstrativo (Até 5 min):** [Link do Vídeo no YouTube](https://youtu.be/VcZeMiE7sLc)
 
